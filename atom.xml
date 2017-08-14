@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2017-08-14T08:48:07.000Z</updated>
+  <updated>2017-08-14T10:23:36.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windcarp.github.io/2017/08/14/Writeup/"/>
     <id>https://windcarp.github.io/2017/08/14/Writeup/</id>
     <published>2017-08-14T07:27:12.000Z</published>
-    <updated>2017-08-14T08:48:07.000Z</updated>
+    <updated>2017-08-14T10:23:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>8月12日Pwnhub第一次沙龙，心想到要和一众大佬面基，心情异常激动，于是攥着讨来的邀请函，冒着12级大雨，满心欢喜的赶到了五环的小别墅~</p>
 <p>上午的议题干货满满，有冠城大佬，360小姐姐和青博学弟flyyy的分享，中午的<strong>烧烤 + 德州扑克</strong>之后便是Pwnhub的经典项目CTF，其中Explorer大佬出了一道<code>cLEMENCy</code>架构的题目。</p>
@@ -35,7 +35,7 @@
 <li><p>内存布局：如下图所示。漏洞利用的目标即把Flag页面开始的一段内存，即flag打印出来。所以说只需要任意地址读就可以了。</p>
 <p> <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fija68reuoj310y0hkn1b.jpg" alt=""></p>
 </li>
-<li><p>指令集：cLEMENCy类似于RISC，最长54bit，指令集和arm有点类似；</p>
+<li><p>指令集：cLEMENCy是RISC，不过最长54bit，指令集和arm有点类似；</p>
 </li>
 <li><p>寄存器：共31个寄存器，<code>R0</code>一般用于<code>param 1</code>和<code>ret value</code>，<code>ST</code>表示栈，<code>RA</code>表示返回地址。</p>
 </li>
