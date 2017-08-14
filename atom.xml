@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Sy3b0l&#39;s 自留地</title>
+  <title>星博的Blog</title>
   <subtitle>Pwner的自我修养</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2017-08-14T08:44:12.000Z</updated>
+  <updated>2017-08-14T08:48:07.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
-    <name>Sy3b0l</name>
+    <name>cxm</name>
     
   </author>
   
@@ -20,9 +20,9 @@
     <link href="https://windcarp.github.io/2017/08/14/Writeup/"/>
     <id>https://windcarp.github.io/2017/08/14/Writeup/</id>
     <published>2017-08-14T07:27:12.000Z</published>
-    <updated>2017-08-14T08:44:12.000Z</updated>
+    <updated>2017-08-14T08:48:07.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Pwnhub-线下沙龙CTF之cLEMENCy题解"><a href="#Pwnhub-线下沙龙CTF之cLEMENCy题解" class="headerlink" title="Pwnhub 线下沙龙CTF之cLEMENCy题解"></a>Pwnhub 线下沙龙CTF之cLEMENCy题解</h1><p>8月12日Pwnhub第一次沙龙，心想到要和一众大佬面基，心情异常激动，于是攥着讨来的邀请函，冒着12级大雨，满心欢喜的赶到了五环的小别墅~</p>
+    <content type="html"><![CDATA[<p>8月12日Pwnhub第一次沙龙，心想到要和一众大佬面基，心情异常激动，于是攥着讨来的邀请函，冒着12级大雨，满心欢喜的赶到了五环的小别墅~</p>
 <p>上午的议题干货满满，有冠城大佬，360小姐姐和青博学弟flyyy的分享，中午的<strong>烧烤 + 德州扑克</strong>之后便是Pwnhub的经典项目CTF，其中Explorer大佬出了一道<code>cLEMENCy</code>架构的题目。</p>
 <p>提到<code>cLEMENCy</code>就不得不提到刚过去的<code>Defcon 25 Final</code>。与去年的CGC不同，<code>Defcon Final</code>今年的规则是，主办方与比赛前一天24小时放出自定义架构，以及相应的<code>emulator</code>，留给参赛者24小时的准备时间。这样一来，所有的参赛队都站在了同一起跑线上，需要从0准备所有的工具。</p>
 <h2 id="0x01-简介：9bit的奇怪架构"><a href="#0x01-简介：9bit的奇怪架构" class="headerlink" title="0x01 简介：9bit的奇怪架构"></a>0x01 简介：9bit的奇怪架构</h2><p><code>cLEMENCy（the LEgitbs Middle ENdian Computer architecture）</code>由LBS的lighting等大佬们设计。<code>cLEMENCy</code>的指令手册中给出了架构的所有细节。简单的总结如下：</p>
@@ -43,7 +43,7 @@
 </li>
 </ol>
 <p>除此之外，比赛中使用的bianry使用了<code>neatlibc</code>，但为了方便模拟器对io和内存管理进行了一些修改。</p>
-<h2 id="0x02-漏洞利用：Ret2Put"><a href="#0x02-漏洞利用：Ret2Put" class="headerlink" title="0x02 漏洞利用：Ret2Put"></a>0x02 漏洞利用：<code>Ret2Put</code></h2><p>既然是2个小时的CTF，大佬们出题肯定是放足了水233。用IDA大概分析一下，可以发现这是一个简单的伪<code>&quot;Base64&quot;</code>。</p>
+<h2 id="0x02-漏洞利用：Ret2Put"><a href="#0x02-漏洞利用：Ret2Put" class="headerlink" title="0x02 漏洞利用：Ret2Put"></a>0x02 漏洞利用：Ret2Put</h2><p>既然是2个小时的CTF，大佬们出题肯定是放足了水233。用IDA大概分析一下，可以发现这是一个简单的伪<code>&quot;Base64&quot;</code>。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fijbgetydzj312w0ocdoa.jpg" alt=""></p>
 <blockquote>
 <p>这里用的是<code>Tea Deliverers</code>在比赛时使用的<code>IDA Processor</code>（膜LYM和Explorer和GYC等大佬）。PPP在赛后也放出了他们比赛时使用的<a href="https://github.com/pwning/defcon25-public" target="_blank" rel="external">Utils</a>。</p>
@@ -62,7 +62,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Pwnhub-线下沙龙CTF之cLEMENCy题解&quot;&gt;&lt;a href=&quot;#Pwnhub-线下沙龙CTF之cLEMENCy题解&quot; class=&quot;headerlink&quot; title=&quot;Pwnhub 线下沙龙CTF之cLEMENCy题解&quot;&gt;&lt;/a&gt;Pwnhub 线下沙龙
+      &lt;p&gt;8月12日Pwnhub第一次沙龙，心想到要和一众大佬面基，心情异常激动，于是攥着讨来的邀请函，冒着12级大雨，满心欢喜的赶到了五环的小别墅~&lt;/p&gt;
+&lt;p&gt;上午的议题干货满满，有冠城大佬，360小姐姐和青博学弟flyyy的分享，中午的&lt;strong&gt;烧烤 + 德州扑克&lt;/s
     
     </summary>
     
