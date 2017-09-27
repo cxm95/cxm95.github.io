@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2017-08-14T10:23:36.000Z</updated>
+  <updated>2017-09-27T14:01:26.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读分享</title>
+    <link href="https://windcarp.github.io/2017/09/27/Academic_share/"/>
+    <id>https://windcarp.github.io/2017/09/27/Academic_share/</id>
+    <published>2017-09-27T13:53:34.000Z</published>
+    <updated>2017-09-27T14:01:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这篇博客会定期分享我阅读论文的笔记。</p>
+<p>我读论文一般是写笔记或者做ppt，所以会定期粘贴我的google share链接到这一篇。</p>
+<h2 id="1-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#1-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="1. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity(NDSS17)"></a>1. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity(NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
+<p>AOCR的攻击简单概括分两步：</p>
+<ol>
+<li>找到Indirect code pointer和函数的对应关系</li>
+<li>通过Malicious Loop Redirection将找到的Code pointer进行Chaining并调用，完成操作</li>
+</ol>
+<p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
+<p>Paper link：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
+<p>Google slide share link：<a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
+<p>这</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇博客会定期分享我阅读论文的笔记。&lt;/p&gt;
+&lt;p&gt;我读论文一般是写笔记或者做ppt，所以会定期粘贴我的google share链接到这一篇。&lt;/p&gt;
+&lt;h2 id=&quot;1-Address-Oblivious-Code-Reuse-On-the-Effectiveness-o
+    
+    </summary>
+    
+      <category term="Academic" scheme="https://windcarp.github.io/categories/Academic/"/>
+    
+    
+      <category term="Paper" scheme="https://windcarp.github.io/tags/Paper/"/>
+    
+  </entry>
   
   <entry>
     <title>Pwnhub 线下沙龙CTF之cLEMENCy题解</title>
