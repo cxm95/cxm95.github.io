@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>星博的Blog</title>
-  <subtitle>Pwner的自我修养</subtitle>
+  <title>星博‘s</title>
+  <subtitle>PHD的自我修养</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
