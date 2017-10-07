@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2017-09-27T14:01:26.000Z</updated>
+  <updated>2017-10-07T06:55:05.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windcarp.github.io/2017/09/27/Academic_share/"/>
     <id>https://windcarp.github.io/2017/09/27/Academic_share/</id>
     <published>2017-09-27T13:53:34.000Z</published>
-    <updated>2017-09-27T14:01:26.000Z</updated>
+    <updated>2017-10-07T06:55:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博客会定期分享我阅读论文的笔记。</p>
 <p>我读论文一般是写笔记或者做ppt，所以会定期粘贴我的google share链接到这一篇。</p>
@@ -33,7 +33,9 @@
 <p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
 <p>Paper link：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
 <p>Google slide share link：<a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
-<p>这</p>
+<h2 id="2-Cyber-Grand-Shellphish-Phrank"><a href="#2-Cyber-Grand-Shellphish-Phrank" class="headerlink" title="2. Cyber Grand Shellphish(Phrank)"></a>2. <strong>Cyber Grand Shellphish(Phrank)</strong></h2><p>本篇叙述了Shellphish在Cyber Grand Challenge中做的一些工作，原文首发于phrank (<a href="http://phrack.org/papers/cyber_grand_shellphish.html)。" target="_blank" rel="external">http://phrack.org/papers/cyber_grand_shellphish.html)。</a></p>
+<p>为了方便阅读，故对其进行了重排版，并添加了一些阅读笔记在Google doc里面。</p>
+<p>Google doc share link: <a href="https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing</a></p>
 ]]></content>
     
     <summary type="html">
