@@ -519,6 +519,7 @@ h2.article-head {
 .article-summary pre .line,
 .markdown-content code .line,
 .article-summary code .line {
+  min-height: 13px;
   margin: 2px 0;
 }
 .markdown-content p,
@@ -822,7 +823,7 @@ h2.article-head {
   transition: all 0.4s;
   transition-delay: 0.05s;
 }
-.author .discription {
+.author .description {
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.4s;
@@ -970,6 +971,11 @@ h2.article-head {
 .catalog-container .toc-main .toc-nav {
   padding: 0;
   margin-top: 1em;
+  overflow-y: scroll;
+  max-height: 480px;
+}
+.catalog-container .toc-main .toc-nav::-webkit-scrollbar {
+  display: none;
 }
 .catalog-container .toc-main ol {
   padding-left: 20px;
@@ -977,6 +983,28 @@ h2.article-head {
 .catalog-container .toc-main li {
   list-style-type: none;
   line-height: 1.5;
+}
+.nav-container {
+  width: 100%;
+  padding-top: 1.5em;
+  margin-top: 1.5em;
+  border-top: 1px dashed #e5e5e5;
+  font-weight: 600;
+}
+.nav-container:after,
+.nav-container:before {
+  content: '';
+  display: table;
+  clear: both;
+}
+.nav-container .nav-left {
+  float: left;
+}
+.nav-container .nav-right {
+  float: right;
+}
+.nav-container .nav-arrow {
+  color: #34495e;
 }
 @-moz-keyframes shine {
   0%, 100% {
