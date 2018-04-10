@@ -127,7 +127,7 @@
 
     <div id="article-banner">
   <h2>论文阅读分享</h2>
-  <p class="post-date">2017-09-27</p>
+  <p class="post-date">2018-04-11</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -137,32 +137,32 @@
   <article class="post-article">
     <section class="markdown-content"><p>这篇博客会定期分享我阅读论文的笔记。</p>
 <hr>
-<h2 id="4-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#4-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="4. Compiler-assisted Code Randomization(Oakland 18)"></a>4. <strong>Compiler-assisted Code Randomization(Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
+<h2 id="4-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#4-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="4. Compiler-assisted Code Randomization (Oakland 18)"></a>4. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
 <p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
 <p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
 <p>最后作者基于LLVM和Gold plugin实现了原型系统，并取得了很低的Overhead。作者在会议后将开源原型代码。</p>
-<p>Paper link: <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="external">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
-<p>Google slide share link: <a href="https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing</a></p>
+<p>Paper: <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="external">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
+<p>Slide: <a href="https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing</a></p>
 <hr>
-<h2 id="3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity(NDSS17)"></a>3. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity(NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
+<h2 id="3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>3. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
 <p>AOCR的攻击简单概括分两步：</p>
 <ol>
 <li>找到Indirect code pointer和函数的对应关系</li>
 <li>通过Malicious Loop Redirection将找到的Code pointer进行Chaining并调用，完成操作</li>
 </ol>
 <p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
-<p>Paper link：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
-<p>Google slide share link：<a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
+<p>Paper：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
+<p>Slide: <a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
 <hr>
-<h2 id="2-Cyber-Grand-Shellphish-Phrank"><a href="#2-Cyber-Grand-Shellphish-Phrank" class="headerlink" title="2. Cyber Grand Shellphish(Phrank)"></a>2. <strong>Cyber Grand Shellphish(Phrank)</strong></h2><p>本篇叙述了Shellphish在Cyber Grand Challenge中做的一些工作，原文首发于phrank (<a href="http://phrack.org/papers/cyber_grand_shellphish.html)。" target="_blank" rel="external">http://phrack.org/papers/cyber_grand_shellphish.html)。</a></p>
+<h2 id="2-Cyber-Grand-Shellphish-Phrank"><a href="#2-Cyber-Grand-Shellphish-Phrank" class="headerlink" title="2. Cyber Grand Shellphish (Phrank)"></a>2. <strong>Cyber Grand Shellphish (Phrank)</strong></h2><p>本篇叙述了Shellphish在Cyber Grand Challenge中做的一些工作，原文首发于phrank (<a href="http://phrack.org/papers/cyber_grand_shellphish.html)。" target="_blank" rel="external">http://phrack.org/papers/cyber_grand_shellphish.html)。</a></p>
 <p>为了方便阅读，故对其进行了重排版，并添加了一些阅读笔记在Google doc里面。</p>
-<p>Google doc share link: <a href="https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing</a></p>
+<p>Doc: <a href="https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing</a></p>
 <hr>
-<h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
+<h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
 <p>最终的效果是在满足条件的122个CVE里成功产生了18个Poc，并顺便发现了一个0day和一个Undisclosed漏洞。</p>
 <p>本篇的作者来自信工所、Indiana与人民大学，一作是Wei You，二作是Peiyuan Zong。</p>
 <p>这篇论文是我在实验室的大组会上分享的，在深圳有同学也想参加，于是斗鱼上来了一次学术直播，之后学长告诉我这篇文章的作者小姐姐看了我的直播。第一次体验了主播的感觉，非常有趣，纪念一下，哈哈~</p>
-<p>Google doc share link: <a href="https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing</a></p>
+<p>Slide: <a href="https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing</a></p>
 <hr>
 </section>
     <!-- Tags START -->
@@ -218,7 +218,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">4. Compiler-assisted Code Randomization(Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity(NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Cyber-Grand-Shellphish-Phrank"><span class="toc-nav-text">2. Cyber Grand Shellphish(Phrank)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">4. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Cyber-Grand-Shellphish-Phrank"><span class="toc-nav-text">2. Cyber Grand Shellphish (Phrank)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li></ol>
     
   </div>
 </aside>
@@ -228,7 +228,7 @@
 
 <script>
   (function () {
-    var url = 'https://windcarp.github.io/2017/09/27/Academic_share/';
+    var url = 'https://windcarp.github.io/2018/04/11/Academic_share/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
