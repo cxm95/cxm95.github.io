@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2018-04-10T17:34:04.000Z</updated>
+  <updated>2018-04-13T12:00:05.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -14,6 +14,152 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>二进制线下赛攻防分享</title>
+    <link href="https://windcarp.github.io/2018/04/13/CTF-Offline-Share/"/>
+    <id>https://windcarp.github.io/2018/04/13/CTF-Offline-Share/</id>
+    <published>2018-04-12T17:32:26.000Z</published>
+    <updated>2018-04-13T12:00:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这篇博客是之前在协会内部分享的内容，将介绍我在二进制线下赛攻防中的一些经历和经验，希望对入门的同学有一定的帮助。</p>
+<hr>
+<h3 id="1-线下赛A-amp-D模式"><a href="#1-线下赛A-amp-D模式" class="headerlink" title="1. 线下赛A&amp;D模式"></a>1. 线下赛A&amp;D模式</h3><p>Attack With Defence，比赛中每个队伍维护多台服务器，服务器中存在多个漏洞，利用漏洞攻击其他队伍可以进行得分，修复漏洞可以避免被其他队伍攻击失分。</p>
+<p>往往线下赛中，二进制需要做的事情没有web那么复杂。最重要的是，</p>
+<ul>
+<li>更快的写出exp</li>
+<li>更快的patch</li>
+<li>通用防御以及脏套路</li>
+<li>批量打出去</li>
+<li>运维(检查流量与权限维持)</li>
+<li>杀马，一些trick</li>
+<li>策略</li>
+</ul>
+<p>等等。</p>
+<p>接下来分模块介绍一下，在国内日常的线下赛中需要注意的点，以及最后的Timeline和一些经验。</p>
+<h3 id="2-更快的写出exp"><a href="#2-更快的写出exp" class="headerlink" title="2. 更快的写出exp"></a>2. 更快的写出exp</h3><p>在攻防赛中一般出现的漏洞往往不会特别复杂，很少出现堆风水利用的题（因为太容易patch），因此<strong>栈溢出</strong>和格式化等一些简单的漏洞比较多（比较简单的比赛）；如果是难一点的比赛，会出现稍为复杂的漏洞：栈未初始化（XCTF 2016中breiflyx的题目），整数溢出（Uctf final 2016 calculator）等。</p>
+<p>如果有条件，可以使用Fuzz工具（afl，driller等）同时进行fuzz。</p>
+<p>写exp时，按照自己的批量攻击的模板来写，而且不要使用全局变量，方便批量脚本运行。</p>
+<h3 id="3-更快的Patch"><a href="#3-更快的Patch" class="headerlink" title="3. 更快的Patch"></a>3. 更快的Patch</h3><p>如果拿到一个题目没什么思路，在看完一遍binary之后还不知道漏洞在哪（一遍binary看下来大概花30分钟），那就看看有哪些明显的点可以patch。</p>
+<h4 id="一般用于Patch的点："><a href="#一般用于Patch的点：" class="headerlink" title="一般用于Patch的点："></a>一般用于Patch的点：</h4><ul>
+<li><p>漏洞点：可以直接在原地修改的话，尽量原地修改，如果修改不了跳到.eh.frame里面；</p>
+</li>
+<li><p>针对堆利用的题目，把free patch可以解决80%的问题，一般主办方不会使用memory leak的方法来检测是否patch free。当然也有一些例外，如XCTF 17 Final Xmail，这道题比较复杂的漏洞，需要利用脏数据占位才能构造整数溢出，所以在正常功能设计了堆释放验证的功能，如果Patch会被Checkdown。</p>
+</li>
+<li><p>针对栈溢出，可以实现一个脚本，修改所有函数的prologue和epilogue；还可以实现Binary层面的CFI等；</p>
+</li>
+<li><p>针对Defcon以及可以抄patch的比赛（以后应该会越来越多？），则有更多的可以实现，如patch后门等（后期补充）。</p>
+</li>
+</ul>
+<h4 id="Patch使用的工具："><a href="#Patch使用的工具：" class="headerlink" title="Patch使用的工具："></a>Patch使用的工具：</h4><ul>
+<li><p>IDA的Patch功能：手动Patch，贼慢</p>
+</li>
+<li><p>binch: <a href="https://github.com/tunz/binch" target="_blank" rel="external">https://github.com/tunz/binch</a></p>
+<p>  一个轻量级的patch库，尚未测试</p>
+</li>
+<li><p>patchkit: <a href="https://github.com/lunixbochs/patchkit" target="_blank" rel="external">https://github.com/lunixbochs/patchkit</a></p>
+<p>  一个重量级的patch任意函数的库，比较好用。</p>
+<p>  可以提前准备的patchkit脚本：</p>
+<ul>
+<li>一键 free/printf patch</li>
+<li>logue修改：这个稳定性可能有问题，但应该提供针对某些位置已经写好的增减问题</li>
+</ul>
+</li>
+<li><p>patchelf：<a href="https://github.com/NixOS/patchelf" target="_blank" rel="external">https://github.com/NixOS/patchelf</a></p>
+</li>
+</ul>
+<p>还有一些工具，后期会进行补充。</p>
+<h3 id="4-通用防御以及脏套路"><a href="#4-通用防御以及脏套路" class="headerlink" title="4. 通用防御以及脏套路"></a>4. 通用防御以及脏套路</h3><p>通用防御几乎在所有的比赛中是被禁止的，因为这样比赛失去了意义。但无论是从一个<strong>负责任</strong>的主办方的角度，需要了解有哪些通防即如何检测；或者是一个队伍缺乏Bin手需要临时挡一下攻击（而且比赛规则没有明令禁止），还是派的上用场的。</p>
+<blockquote>
+<p><strong>我们承诺不首先使用核武器</strong></p>
+</blockquote>
+<h4 id="通用防御"><a href="#通用防御" class="headerlink" title="通用防御"></a>通用防御</h4><ul>
+<li><p>gatekeeper: <a href="https://github.com/samuraictf/gatekeeper" target="_blank" rel="external">https://github.com/samuraictf/gatekeeper</a></p>
+<p>  一个功能强大的通防套件，但很容易被发现，通过fork的方式嵌套在源文件上。</p>
+</li>
+<li><p>Traffic-Wrapper: (将开源)</p>
+<p>  一个轻量级流量wrapper，可以过滤流量（如0x7f)</p>
+</li>
+<li><p>bianryWaf: <a href="https://github.com/Bluekezhou/binaryWaf" target="_blank" rel="external">https://github.com/Bluekezhou/binaryWaf</a></p>
+<p>  我室友的作品，和gatekeeper功能类似。</p>
+</li>
+<li><p>c-proxy: （将开源）</p>
+</li>
+</ul>
+<h3 id="5-批量打出去"><a href="#5-批量打出去" class="headerlink" title="5. 批量打出去"></a>5. 批量打出去</h3><p>在攻防赛中，批量打Exploit并统计攻击信息十分重要，如果工具的稳定性欠佳甚至会导致别人拿到你的攻击流量，比你打的分数还要高。</p>
+<p>需要准备的东西有：</p>
+<ul>
+<li><p>批量脚本：（将开源）</p>
+</li>
+<li><p>Flag自动提交：（将开源）</p>
+</li>
+</ul>
+<p>（To be finished.）</p>
+<h3 id="6-运维"><a href="#6-运维" class="headerlink" title="6. 运维"></a>6. 运维</h3><p>在二进制攻防赛中，需要运维的点没有web那么多，除了web运维之外，需要做到的至少有以下几个方面。</p>
+<h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><ul>
+<li><p>需要备份的点有：</p>
+<ul>
+<li><p>刚刚登陆上的所有进程信息</p>
+</li>
+<li><p>所有与题目相关的binary（包括题目依赖的所有libc信息）</p>
+</li>
+<li><p>登录上来所有的端口信息。以及文件目录信息。</p>
+</li>
+<li><p>监控所有可写目录，可以查杀一些低级马。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="权限维持-amp-群控"><a href="#权限维持-amp-群控" class="headerlink" title="权限维持&amp;群控"></a>权限维持&amp;群控</h4><h4 id="杀马"><a href="#杀马" class="headerlink" title="杀马"></a>杀马</h4><h4 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h4><p>（To be finished.）</p>
+<h3 id="6-网络等基础设施"><a href="#6-网络等基础设施" class="headerlink" title="6. 网络等基础设施"></a>6. 网络等基础设施</h3><p>（To be finished.）</p>
+<h3 id="7-策略"><a href="#7-策略" class="headerlink" title="7. 策略"></a>7. 策略</h3><p>线下赛针对不同的规则策略有很多，针对题目的难易，做题的进度可以适时调整。</p>
+<p>一般的线下赛人员组成配置是3-5人，一般有一个人主要负责运维，其余1-2位web手以及1-2位二进制手。</p>
+<p>（To be finished.）</p>
+<h3 id="8-线下赛Timeline"><a href="#8-线下赛Timeline" class="headerlink" title="8. 线下赛Timeline"></a>8. 线下赛Timeline</h3><ul>
+<li><p>-2天</p>
+<p>  整理思路：根据已有的规则初步分工指定策略，并准备（主要是测试）所有的工具。<strong>运维同学</strong> 还需要准备必须带过去的硬件设备。（这里不展开讲了）</p>
+<p>  押题：根据已有的信息估计题目难度（如比赛时长，出题方等），熟悉一下题型。</p>
+</li>
+<li><p>-1天</p>
+<p>  应该在路上，如果-2天没有准备好则继续准备，但不需要看新的东西，旧的东西用熟练就好，命令最好能背下来，背不下来也抄下来。</p>
+<p>  去超市采购，并一定睡个好觉。</p>
+</li>
+<li><p>-1h</p>
+<p>  至少提前一小时到达现场，<strong>运维同学</strong>和大家一起搭建好环境，仔细读一下比赛细则，配好外网环境。</p>
+</li>
+<li><p>1h</p>
+<p>  所有同学上机器，把自己负责的题目全部备份（不止运维同学）。运维同学同时开始看web/bin题目，并在first blood打出来之后重点转移到看流量，如果发现可疑流量，第一时间通知对应同学。</p>
+</li>
+<li><p>之后</p>
+<p>  如果题目比较难或者手速赶不上，重点可以放在看流量上。</p>
+</li>
+</ul>
+<h4 id="针对bianry："><a href="#针对bianry：" class="headerlink" title="针对bianry："></a>针对bianry：</h4><ol>
+<li>先花半个小时看binary, 不要先忙着patch。</li>
+<li>如果找到漏洞点，立即写exploit，能批量打之后再打patch</li>
+<li>如果有流量，看完binary的情况下优先看流量</li>
+<li>如果漏洞没找到也没流量，看bianry如何patch</li>
+</ol>
+<h3 id="9-作为一个主办方"><a href="#9-作为一个主办方" class="headerlink" title="9. 作为一个主办方"></a>9. 作为一个主办方</h3><p>（To be finished.）</p>
+<h3 id="10-一些经历"><a href="#10-一些经历" class="headerlink" title="10. 一些经历"></a>10. 一些经历</h3><p>（To be finished.）</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇博客是之前在协会内部分享的内容，将介绍我在二进制线下赛攻防中的一些经历和经验，希望对入门的同学有一定的帮助。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;1-线下赛A-amp-D模式&quot;&gt;&lt;a href=&quot;#1-线下赛A-amp-D模式&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+      <category term="CTF-Pwn" scheme="https://windcarp.github.io/categories/CTF-Pwn/"/>
+    
+    
+      <category term="Pwn" scheme="https://windcarp.github.io/tags/Pwn/"/>
+    
+      <category term="CTF" scheme="https://windcarp.github.io/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>论文阅读分享</title>
