@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2018-04-13T12:00:05.000Z</updated>
+  <updated>2018-04-13T12:05:14.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windcarp.github.io/2018/04/13/CTF-Offline-Share/"/>
     <id>https://windcarp.github.io/2018/04/13/CTF-Offline-Share/</id>
     <published>2018-04-12T17:32:26.000Z</published>
-    <updated>2018-04-13T12:00:05.000Z</updated>
+    <updated>2018-04-13T12:05:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博客是之前在协会内部分享的内容，将介绍我在二进制线下赛攻防中的一些经历和经验，希望对入门的同学有一定的帮助。</p>
 <hr>
@@ -37,10 +37,11 @@
 </ul>
 <p>等等。</p>
 <p>接下来分模块介绍一下，在国内日常的线下赛中需要注意的点，以及最后的Timeline和一些经验。</p>
-<h3 id="2-更快的写出exp"><a href="#2-更快的写出exp" class="headerlink" title="2. 更快的写出exp"></a>2. 更快的写出exp</h3><p>在攻防赛中一般出现的漏洞往往不会特别复杂，很少出现堆风水利用的题（因为太容易patch），因此<strong>栈溢出</strong>和格式化等一些简单的漏洞比较多（比较简单的比赛）；如果是难一点的比赛，会出现稍为复杂的漏洞：栈未初始化（XCTF 2016中breiflyx的题目），整数溢出（Uctf final 2016 calculator）等。</p>
+<h3 id="2-更快的写出exp"><a href="#2-更快的写出exp" class="headerlink" title="2. 更快的写出exp"></a>2. 更快的写出exp</h3><p>在攻防赛中一般出现的漏洞往往不会特别复杂，很少出现堆风水利用的题（因为太容易patch），因此<strong>栈溢出</strong>和格式化等一些简单的漏洞比较多（比较简单的比赛）.</p>
+<p>如果是难一点的比赛，会出现稍为复杂的漏洞：栈未初始化（XCTF 2016中breiflyx的题目），整数溢出（Uctf final 2016 calculator）等。</p>
 <p>如果有条件，可以使用Fuzz工具（afl，driller等）同时进行fuzz。</p>
 <p>写exp时，按照自己的批量攻击的模板来写，而且不要使用全局变量，方便批量脚本运行。</p>
-<h3 id="3-更快的Patch"><a href="#3-更快的Patch" class="headerlink" title="3. 更快的Patch"></a>3. 更快的Patch</h3><p>如果拿到一个题目没什么思路，在看完一遍binary之后还不知道漏洞在哪（一遍binary看下来大概花30分钟），那就看看有哪些明显的点可以patch。</p>
+<h3 id="3-更快的Patch"><a href="#3-更快的Patch" class="headerlink" title="3. 更快的Patch"></a>3. 更快的Patch</h3><p>如果拿到一个题目没什么思路，在看完一遍binary之后还不知道漏洞在哪（一遍binary看下来大概花30分钟），那就看看有哪些明显的点可以patch。</p>
 <h4 id="一般用于Patch的点："><a href="#一般用于Patch的点：" class="headerlink" title="一般用于Patch的点："></a>一般用于Patch的点：</h4><ul>
 <li><p>漏洞点：可以直接在原地修改的话，尽量原地修改，如果修改不了跳到.eh.frame里面；</p>
 </li>
@@ -111,11 +112,11 @@
 </li>
 </ul>
 <h4 id="权限维持-amp-群控"><a href="#权限维持-amp-群控" class="headerlink" title="权限维持&amp;群控"></a>权限维持&amp;群控</h4><h4 id="杀马"><a href="#杀马" class="headerlink" title="杀马"></a>杀马</h4><h4 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h4><p>（To be finished.）</p>
-<h3 id="6-网络等基础设施"><a href="#6-网络等基础设施" class="headerlink" title="6. 网络等基础设施"></a>6. 网络等基础设施</h3><p>（To be finished.）</p>
-<h3 id="7-策略"><a href="#7-策略" class="headerlink" title="7. 策略"></a>7. 策略</h3><p>线下赛针对不同的规则策略有很多，针对题目的难易，做题的进度可以适时调整。</p>
+<h3 id="7-网络等基础设施"><a href="#7-网络等基础设施" class="headerlink" title="7. 网络等基础设施"></a>7. 网络等基础设施</h3><p>（To be finished.）</p>
+<h3 id="8-策略"><a href="#8-策略" class="headerlink" title="8. 策略"></a>8. 策略</h3><p>线下赛针对不同的规则策略有很多，针对题目的难易，做题的进度可以适时调整。</p>
 <p>一般的线下赛人员组成配置是3-5人，一般有一个人主要负责运维，其余1-2位web手以及1-2位二进制手。</p>
 <p>（To be finished.）</p>
-<h3 id="8-线下赛Timeline"><a href="#8-线下赛Timeline" class="headerlink" title="8. 线下赛Timeline"></a>8. 线下赛Timeline</h3><ul>
+<h3 id="9-线下赛Timeline"><a href="#9-线下赛Timeline" class="headerlink" title="9. 线下赛Timeline"></a>9. 线下赛Timeline</h3><ul>
 <li><p>-2天</p>
 <p>  整理思路：根据已有的规则初步分工指定策略，并准备（主要是测试）所有的工具。<strong>运维同学</strong> 还需要准备必须带过去的硬件设备。（这里不展开讲了）</p>
 <p>  押题：根据已有的信息估计题目难度（如比赛时长，出题方等），熟悉一下题型。</p>
@@ -140,8 +141,8 @@
 <li>如果有流量，看完binary的情况下优先看流量</li>
 <li>如果漏洞没找到也没流量，看bianry如何patch</li>
 </ol>
-<h3 id="9-作为一个主办方"><a href="#9-作为一个主办方" class="headerlink" title="9. 作为一个主办方"></a>9. 作为一个主办方</h3><p>（To be finished.）</p>
-<h3 id="10-一些经历"><a href="#10-一些经历" class="headerlink" title="10. 一些经历"></a>10. 一些经历</h3><p>（To be finished.）</p>
+<h3 id="10-作为主办方"><a href="#10-作为主办方" class="headerlink" title="10. 作为主办方"></a>10. 作为主办方</h3><p>（To be finished.）</p>
+<h3 id="11-一些经历"><a href="#11-一些经历" class="headerlink" title="11. 一些经历"></a>11. 一些经历</h3><p>（To be finished.）</p>
 ]]></content>
     
     <summary type="html">
@@ -166,9 +167,24 @@
     <link href="https://windcarp.github.io/2018/04/11/Academic_share/"/>
     <id>https://windcarp.github.io/2018/04/11/Academic_share/</id>
     <published>2018-04-10T17:32:26.000Z</published>
-    <updated>2018-04-10T17:34:04.000Z</updated>
+    <updated>2018-04-13T12:11:06.000Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博客会定期分享我阅读论文的笔记。</p>
+<hr>
+<h2 id="5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="5. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>5. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识，中间翻车无数Orz;</p>
+<p>Slide里介绍了以下内容：</p>
+<ul>
+<li>编译器的一些背景知识</li>
+<li>LLVM的设计</li>
+<li>一些LLVM中重要的概念与IR语言</li>
+<li>LLVM编译中的实现细节<ul>
+<li>Pass与优化</li>
+<li>Code Generator与SelectionDAG</li>
+</ul>
+</li>
+<li>LLVM的引用</li>
+</ul>
+<p>Slide:  <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
 <hr>
 <h2 id="4-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#4-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="4. Compiler-assisted Code Randomization (Oakland 18)"></a>4. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
 <p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
@@ -203,7 +219,7 @@
     
       &lt;p&gt;这篇博客会定期分享我阅读论文的笔记。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;4-Compiler-assisted-Code-Randomization-Oakland-18&quot;&gt;&lt;a href=&quot;#4-Compiler-assisted-Code-Randomization-O
+&lt;h2 id=&quot;5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享&quot;&gt;&lt;a href=&quot;#5-Getting-Started-at-LLVM-Yet-a
     
     </summary>
     

@@ -150,10 +150,11 @@
 </ul>
 <p>等等。</p>
 <p>接下来分模块介绍一下，在国内日常的线下赛中需要注意的点，以及最后的Timeline和一些经验。</p>
-<h3 id="2-更快的写出exp"><a href="#2-更快的写出exp" class="headerlink" title="2. 更快的写出exp"></a>2. 更快的写出exp</h3><p>在攻防赛中一般出现的漏洞往往不会特别复杂，很少出现堆风水利用的题（因为太容易patch），因此<strong>栈溢出</strong>和格式化等一些简单的漏洞比较多（比较简单的比赛）；如果是难一点的比赛，会出现稍为复杂的漏洞：栈未初始化（XCTF 2016中breiflyx的题目），整数溢出（Uctf final 2016 calculator）等。</p>
+<h3 id="2-更快的写出exp"><a href="#2-更快的写出exp" class="headerlink" title="2. 更快的写出exp"></a>2. 更快的写出exp</h3><p>在攻防赛中一般出现的漏洞往往不会特别复杂，很少出现堆风水利用的题（因为太容易patch），因此<strong>栈溢出</strong>和格式化等一些简单的漏洞比较多（比较简单的比赛）.</p>
+<p>如果是难一点的比赛，会出现稍为复杂的漏洞：栈未初始化（XCTF 2016中breiflyx的题目），整数溢出（Uctf final 2016 calculator）等。</p>
 <p>如果有条件，可以使用Fuzz工具（afl，driller等）同时进行fuzz。</p>
 <p>写exp时，按照自己的批量攻击的模板来写，而且不要使用全局变量，方便批量脚本运行。</p>
-<h3 id="3-更快的Patch"><a href="#3-更快的Patch" class="headerlink" title="3. 更快的Patch"></a>3. 更快的Patch</h3><p>如果拿到一个题目没什么思路，在看完一遍binary之后还不知道漏洞在哪（一遍binary看下来大概花30分钟），那就看看有哪些明显的点可以patch。</p>
+<h3 id="3-更快的Patch"><a href="#3-更快的Patch" class="headerlink" title="3. 更快的Patch"></a>3. 更快的Patch</h3><p>如果拿到一个题目没什么思路，在看完一遍binary之后还不知道漏洞在哪（一遍binary看下来大概花30分钟），那就看看有哪些明显的点可以patch。</p>
 <h4 id="一般用于Patch的点："><a href="#一般用于Patch的点：" class="headerlink" title="一般用于Patch的点："></a>一般用于Patch的点：</h4><ul>
 <li><p>漏洞点：可以直接在原地修改的话，尽量原地修改，如果修改不了跳到.eh.frame里面；</p>
 </li>
@@ -224,11 +225,11 @@
 </li>
 </ul>
 <h4 id="权限维持-amp-群控"><a href="#权限维持-amp-群控" class="headerlink" title="权限维持&amp;群控"></a>权限维持&amp;群控</h4><h4 id="杀马"><a href="#杀马" class="headerlink" title="杀马"></a>杀马</h4><h4 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h4><p>（To be finished.）</p>
-<h3 id="6-网络等基础设施"><a href="#6-网络等基础设施" class="headerlink" title="6. 网络等基础设施"></a>6. 网络等基础设施</h3><p>（To be finished.）</p>
-<h3 id="7-策略"><a href="#7-策略" class="headerlink" title="7. 策略"></a>7. 策略</h3><p>线下赛针对不同的规则策略有很多，针对题目的难易，做题的进度可以适时调整。</p>
+<h3 id="7-网络等基础设施"><a href="#7-网络等基础设施" class="headerlink" title="7. 网络等基础设施"></a>7. 网络等基础设施</h3><p>（To be finished.）</p>
+<h3 id="8-策略"><a href="#8-策略" class="headerlink" title="8. 策略"></a>8. 策略</h3><p>线下赛针对不同的规则策略有很多，针对题目的难易，做题的进度可以适时调整。</p>
 <p>一般的线下赛人员组成配置是3-5人，一般有一个人主要负责运维，其余1-2位web手以及1-2位二进制手。</p>
 <p>（To be finished.）</p>
-<h3 id="8-线下赛Timeline"><a href="#8-线下赛Timeline" class="headerlink" title="8. 线下赛Timeline"></a>8. 线下赛Timeline</h3><ul>
+<h3 id="9-线下赛Timeline"><a href="#9-线下赛Timeline" class="headerlink" title="9. 线下赛Timeline"></a>9. 线下赛Timeline</h3><ul>
 <li><p>-2天</p>
 <p>  整理思路：根据已有的规则初步分工指定策略，并准备（主要是测试）所有的工具。<strong>运维同学</strong> 还需要准备必须带过去的硬件设备。（这里不展开讲了）</p>
 <p>  押题：根据已有的信息估计题目难度（如比赛时长，出题方等），熟悉一下题型。</p>
@@ -253,8 +254,8 @@
 <li>如果有流量，看完binary的情况下优先看流量</li>
 <li>如果漏洞没找到也没流量，看bianry如何patch</li>
 </ol>
-<h3 id="9-作为一个主办方"><a href="#9-作为一个主办方" class="headerlink" title="9. 作为一个主办方"></a>9. 作为一个主办方</h3><p>（To be finished.）</p>
-<h3 id="10-一些经历"><a href="#10-一些经历" class="headerlink" title="10. 一些经历"></a>10. 一些经历</h3><p>（To be finished.）</p>
+<h3 id="10-作为主办方"><a href="#10-作为主办方" class="headerlink" title="10. 作为主办方"></a>10. 作为主办方</h3><p>（To be finished.）</p>
+<h3 id="11-一些经历"><a href="#11-一些经历" class="headerlink" title="11. 一些经历"></a>11. 一些经历</h3><p>（To be finished.）</p>
 </section>
     <!-- Tags START -->
     
@@ -313,7 +314,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-线下赛A-amp-D模式"><span class="toc-nav-text">1. 线下赛A&D模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-更快的写出exp"><span class="toc-nav-text">2. 更快的写出exp</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-更快的Patch"><span class="toc-nav-text">3. 更快的Patch</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#一般用于Patch的点："><span class="toc-nav-text">一般用于Patch的点：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Patch使用的工具："><span class="toc-nav-text">Patch使用的工具：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-通用防御以及脏套路"><span class="toc-nav-text">4. 通用防御以及脏套路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通用防御"><span class="toc-nav-text">通用防御</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-批量打出去"><span class="toc-nav-text">5. 批量打出去</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-运维"><span class="toc-nav-text">6. 运维</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#备份"><span class="toc-nav-text">备份</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#权限维持-amp-群控"><span class="toc-nav-text">权限维持&群控</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#杀马"><span class="toc-nav-text">杀马</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Tricks"><span class="toc-nav-text">Tricks</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-网络等基础设施"><span class="toc-nav-text">6. 网络等基础设施</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-策略"><span class="toc-nav-text">7. 策略</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-线下赛Timeline"><span class="toc-nav-text">8. 线下赛Timeline</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#针对bianry："><span class="toc-nav-text">针对bianry：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-作为一个主办方"><span class="toc-nav-text">9. 作为一个主办方</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#10-一些经历"><span class="toc-nav-text">10. 一些经历</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-线下赛A-amp-D模式"><span class="toc-nav-text">1. 线下赛A&D模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-更快的写出exp"><span class="toc-nav-text">2. 更快的写出exp</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-更快的Patch"><span class="toc-nav-text">3. 更快的Patch</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#一般用于Patch的点："><span class="toc-nav-text">一般用于Patch的点：</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Patch使用的工具："><span class="toc-nav-text">Patch使用的工具：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-通用防御以及脏套路"><span class="toc-nav-text">4. 通用防御以及脏套路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通用防御"><span class="toc-nav-text">通用防御</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-批量打出去"><span class="toc-nav-text">5. 批量打出去</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-运维"><span class="toc-nav-text">6. 运维</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#备份"><span class="toc-nav-text">备份</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#权限维持-amp-群控"><span class="toc-nav-text">权限维持&群控</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#杀马"><span class="toc-nav-text">杀马</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Tricks"><span class="toc-nav-text">Tricks</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-网络等基础设施"><span class="toc-nav-text">7. 网络等基础设施</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-策略"><span class="toc-nav-text">8. 策略</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-线下赛Timeline"><span class="toc-nav-text">9. 线下赛Timeline</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#针对bianry："><span class="toc-nav-text">针对bianry：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#10-作为主办方"><span class="toc-nav-text">10. 作为主办方</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-一些经历"><span class="toc-nav-text">11. 一些经历</span></a></li></ol>
     
   </div>
 </aside>

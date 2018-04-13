@@ -137,6 +137,21 @@
   <article class="post-article">
     <section class="markdown-content"><p>这篇博客会定期分享我阅读论文的笔记。</p>
 <hr>
+<h2 id="5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="5. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>5. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识，中间翻车无数Orz;</p>
+<p>Slide里介绍了以下内容：</p>
+<ul>
+<li>编译器的一些背景知识</li>
+<li>LLVM的设计</li>
+<li>一些LLVM中重要的概念与IR语言</li>
+<li>LLVM编译中的实现细节<ul>
+<li>Pass与优化</li>
+<li>Code Generator与SelectionDAG</li>
+</ul>
+</li>
+<li>LLVM的引用</li>
+</ul>
+<p>Slide:  <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
+<hr>
 <h2 id="4-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#4-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="4. Compiler-assisted Code Randomization (Oakland 18)"></a>4. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
 <p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
 <p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
@@ -225,7 +240,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">4. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Cyber-Grand-Shellphish-Phrank"><span class="toc-nav-text">2. Cyber Grand Shellphish (Phrank)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><span class="toc-nav-text">5. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">4. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Cyber-Grand-Shellphish-Phrank"><span class="toc-nav-text">2. Cyber Grand Shellphish (Phrank)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li></ol>
     
   </div>
 </aside>
