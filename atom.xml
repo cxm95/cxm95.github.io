@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2018-05-15T17:49:09.000Z</updated>
+  <updated>2018-05-15T17:50:33.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://windcarp.github.io/2018/05/16/Defcon%20CTF%20Quals%202018/"/>
     <id>https://windcarp.github.io/2018/05/16/Defcon CTF Quals 2018/</id>
     <published>2018-05-15T17:32:26.000Z</published>
-    <updated>2018-05-15T17:49:09.000Z</updated>
+    <updated>2018-05-15T17:50:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>上周末是 Defcon CTF Quals 2018的比赛，今年是更换主办方的第一年，之前都是 <strong>Legitimate Business Syndicate</strong>，比赛质量也一直很高；然而去年Defcon CTF 的五年合同到期，于是今年是新的主办方，拖了 n 久才确定的 <a href="https://www.oooverflow.io/" target="_blank" rel="external"><strong>Order of the Overflow</strong></a>。</p>
 <p>大佬们一大部分来自Shellphish，例如非常眼熟的<strong>Yan Shoshitaishvili (@Zardus)</strong>。值得一提的是，他们中很多都是年轻教授，一开始还以为会搞成 Old Style 的比赛；赛前一天在 Defcon China 碰到冯老师，打听到他也参与了出题审题，瞬间感觉比赛质量有保障了。</p>
@@ -36,7 +36,7 @@
 <p>分析 <code>gdbserver</code> 流量得知，其在license检查完的函数出口下断点并执行。同时会随机上传一段 Binary 看是否打 Patch。那我们第一步，在 <code>eh_frame</code> 处 <code>patch + 跳转</code>，过了 license 的检查；于此同时开始无脑写 <code>Angr Script</code>。（后来 license 确实是 Flag，只不过 Angr 跑不出来，浪费了半天）</p>
 <p>之后，客服告诉我， Crash 了才会处理。有 Binary Crash 还不容易，随便 Patch 个无效地址取，并观察 <code>gdbserver</code> 的流量，发现 Crash 后会把我的处理参数取回去执行，并返回结果他那里没有 Crash。问题就变成了，如何构造参数使远程 Crash。</p>
 <p>Binary 就很小，翻了半天没有任何溢出可能，不过 Crash 还是可以的。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cal_main_element(<span class="keyword">int</span> *element_weight_stack)</div><div class="line">  ...</div><div class="line">  <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">"The main element is %s, which accounts for %d%% of the total weight\n"</span>, &amp;element_name[<span class="number">2</span> * idx],(<span class="keyword">unsigned</span> <span class="keyword">int</span>)(<span class="number">100</span> * max / sum));</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cal_main_element(<span class="keyword">int</span> *element_weight_stack)</div><div class="line">  ...</div><div class="line">  <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">"The main element is %s, which accounts for %d%% of the total weight\n"</span>, </div><div class="line">  &amp;element_name[<span class="number">2</span> * idx],(<span class="keyword">unsigned</span> <span class="keyword">int</span>)(<span class="number">100</span> * max / sum));</div></pre></td></tr></table></figure>
 <ol>
 <li><strong><code>element_weight_stack</code>在对元素质量做统计时是直接覆盖</strong>;</li>
 <li><strong><code>cal_main_element</code> 可能除0</strong>；</li>
