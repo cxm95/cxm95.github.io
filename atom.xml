@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2018-05-15T17:32:00.000Z</updated>
+  <updated>2018-05-15T17:49:09.000Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Defcon CTF Quals 2018 - Tech Support Writup and Some Challenges</title>
+    <title>Defcon CTF Quals 2018 &amp; Tech Support</title>
     <link href="https://windcarp.github.io/2018/05/16/Defcon%20CTF%20Quals%202018/"/>
     <id>https://windcarp.github.io/2018/05/16/Defcon CTF Quals 2018/</id>
     <published>2018-05-15T17:32:26.000Z</published>
-    <updated>2018-05-15T17:32:00.000Z</updated>
+    <updated>2018-05-15T17:49:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>上周末是 Defcon CTF Quals 2018的比赛，今年是更换主办方的第一年，之前都是 <strong>Legitimate Business Syndicate</strong>，比赛质量也一直很高；然而去年Defcon CTF 的五年合同到期，于是今年是新的主办方，拖了 n 久才确定的 <a href="https://www.oooverflow.io/" target="_blank" rel="external"><strong>Order of the Overflow</strong></a>。</p>
 <p>大佬们一大部分来自Shellphish，例如非常眼熟的<strong>Yan Shoshitaishvili (@Zardus)</strong>。值得一提的是，他们中很多都是年轻教授，一开始还以为会搞成 Old Style 的比赛；赛前一天在 Defcon China 碰到冯老师，打听到他也参与了出题审题，瞬间感觉比赛质量有保障了。</p>
@@ -362,11 +362,11 @@
   </entry>
   
   <entry>
-    <title>Pwn500：shrink the chunk(LCTF 2016)</title>
+    <title>LCTF 2016 Shrink-the-Chunk Writeup</title>
     <link href="https://windcarp.github.io/2016/12/27/Test-Blog/"/>
     <id>https://windcarp.github.io/2016/12/27/Test-Blog/</id>
     <published>2016-12-27T07:27:12.000Z</published>
-    <updated>2018-03-21T18:38:04.000Z</updated>
+    <updated>2018-05-15T17:48:51.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>这是一篇测试博客。</p>
