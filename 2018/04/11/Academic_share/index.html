@@ -10,7 +10,7 @@
   
   <title>
     
-      论文阅读分享 | 星博‘s
+      论文阅读分享(2018) | 星博‘s
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -126,7 +126,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>论文阅读分享</h2>
+  <h2>论文阅读分享(2018)</h2>
   <p class="post-date">2018-04-11</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -135,7 +135,30 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>这篇博客会定期分享我阅读论文的笔记。</p>
+    <section class="markdown-content"><h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw388tg94mj30w10b0n5o.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3895lltxj30eb09caco.jpg" alt=""></p>
+<p>最终的效果是在满足条件的122个CVE里成功产生了18个Poc，并顺便发现了一个0day和一个Undisclosed漏洞。</p>
+<p><strong>Paper:</strong> <a href="https://acmccs.github.io/papers/p2139-youA.pdf" target="_blank" rel="noopener">https://acmccs.github.io/papers/p2139-youA.pdf</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7yAyog" target="_blank" rel="noopener">http://t.cn/E7yAyog</a></p>
+<hr>
+<h2 id="2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>2. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
+<p>AOCR的攻击简单概括分两步：</p>
+<ol>
+<li>找到Indirect code pointer和函数的对应关系</li>
+<li>通过Malicious Loop Redirection将找到的Code pointer进行Chaining并调用，完成操作</li>
+</ol>
+<p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
+<p><strong>Paper:</strong> <a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="noopener">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
+<p><strong>Slide:</strong> <a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
+<hr>
+<h2 id="3-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#3-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="3. Compiler-assisted Code Randomization (Oakland 18)"></a>3. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
+<p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
+<p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
+<p>最后作者基于LLVM和Gold plugin实现了原型系统，并取得了很低的Overhead。作者在会议后将开源原型代码。</p>
+<p><strong>Paper:</strong> <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="noopener">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7yPCam" target="_blank" rel="noopener">http://t.cn/E7yPCam</a></p>
+<hr>
 <hr>
 <h2 id="4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>4. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识。Slide里介绍了以下内容：</p>
 <ul>
@@ -149,33 +172,7 @@
 </li>
 <li>LLVM的引用</li>
 </ul>
-<p>Slide: <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
-<hr>
-<h2 id="3-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#3-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="3. Compiler-assisted Code Randomization (Oakland 18)"></a>3. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
-<p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
-<p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
-<p>最后作者基于LLVM和Gold plugin实现了原型系统，并取得了很低的Overhead。作者在会议后将开源原型代码。</p>
-<p>Paper: <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="noopener">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
-<p>Slide: <a href="http://t.cn/E7yPCam" target="_blank" rel="noopener">http://t.cn/E7yPCam</a></p>
-<hr>
-<h2 id="2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>2. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
-<p>AOCR的攻击简单概括分两步：</p>
-<ol>
-<li>找到Indirect code pointer和函数的对应关系</li>
-<li>通过Malicious Loop Redirection将找到的Code pointer进行Chaining并调用，完成操作</li>
-</ol>
-<p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
-<p>Paper：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="noopener">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
-<p>Slide: <a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
-<hr>
-<h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw388tg94mj30w10b0n5o.jpg" alt=""></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3895lltxj30eb09caco.jpg" alt=""></p>
-<p>最终的效果是在满足条件的122个CVE里成功产生了18个Poc，并顺便发现了一个0day和一个Undisclosed漏洞。</p>
-<p>本篇的作者来自信工所、Indiana与人大，一作是Wei You，二作是Peiyuan Zong。</p>
-<p><strong>Paper:</strong> <a href="https://acmccs.github.io/papers/p2139-youA.pdf" target="_blank" rel="noopener">https://acmccs.github.io/papers/p2139-youA.pdf</a></p>
-<p><strong>Slide:</strong> <a href="http://t.cn/E7yAyog" target="_blank" rel="noopener">http://t.cn/E7yAyog</a></p>
-<hr>
+<p><strong>Slide:</strong> <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="noopener">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
 </section>
     <!-- Tags START -->
     
@@ -201,13 +198,6 @@
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/04/13/CTF-Offline-Share/">
-        
-          二进制线下赛攻防分享
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -237,7 +227,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><span class="toc-nav-text">4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">3. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">3. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><span class="toc-nav-text">4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</span></a></li></ol>
     
   </div>
 </aside>
@@ -303,7 +293,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "论文阅读分享",
+        id: "论文阅读分享(2018)",
         owner: "undefined",
         repo: "undefined",
         oauth: {
