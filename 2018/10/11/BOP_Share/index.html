@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="我们的征途是星辰大海">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      BOP-Block Oriented Programing(CCS 18) | 星博‘s
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>星博‘s</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>BOP-Block Oriented Programing(CCS 18)</h2>
+  <p class="post-date">2018-10-11</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h1 id="BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><a href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18" class="headerlink" title="[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)"></a><strong>[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</strong></h1><p><strong>Paper:</strong> <a href="https://arxiv.org/abs/1805.04767" target="_blank" rel="noopener">https://arxiv.org/abs/1805.04767</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7LdDfB" target="_blank" rel="noopener">http://t.cn/E7LdDfB</a></p>
+<hr>
+<p>随着控制流完整性（CFI）的广泛部署， 控制流劫持攻击/代码重用攻击变得更加困难。 CFI将控制流限制在有限的位置，严重限制了任意代码的执行。在高级控制流劫持防御 （如CFI和影子堆栈）下评估应用程序的剩余攻击面仍然是一个悬而未决的问题。</p>
+<p>这篇文章介绍了BOPC（Block Oriented Programing Compiler），一种自动评估攻击者是否可以在使用 CFI/Shadowstack 防御强化的二进制文件上执行任意代码的机制。</p>
+<ul>
+<li>BOPC 的输入是以图灵完备的高级语言 SPL（Sploit Languate） 编写的 Exploit。</li>
+<li>SPL Payload 被编译为程序的 Trace，执行该 Trace 即执行了 Exploit 定义的行为。</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383rvtd1j30r706pmys.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3845vdk3j30sp0g076s.jpg" alt=""></p>
+<h3 id="BOPC-分四步完成这个过程。"><a href="#BOPC-分四步完成这个过程。" class="headerlink" title="BOPC 分四步完成这个过程。"></a><strong>BOPC 分四步完成这个过程。</strong></h3><ol>
+<li>使用 SPL 定义漏洞利用行为</li>
+<li>找到功能块（Function Block）并选择适当的块</li>
+<li>找到 BOP Gadget 的调度程序块（Dispatcher Block）</li>
+<li>Chain BOP Gadgets</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw37pgr1d3j30ss07a0v8.jpg" alt=""></p>
+<p>文中发现，将 SPL Payload 映射到程序 Trace 的问题是NP难的，因此BOPC首先通过修剪不可行路径来减少搜索空间，然后使用启发式方法来引导搜索到可能的路径。 </p>
+<p>最后，BOPC 将 Trace 编码为一组内存写入。依赖程序的 AAW 漏洞，完成内存写入之后，可以从指定的 Entry Point 完成指定的行为。</p>
+<p>经过测试，BOPC 在 130 个测试中，成功为 105 个 Case 生成了完成了至少一种操作的路径。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383bqlzjj30vs08g458.jpg" alt=""></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Paper" >
+    <span class="tag-code">Paper</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/05/16/Defcon CTF Quals 2018/">
+        <span class="nav-arrow">← </span>
+        
+          Defcon CTF Quals 2018
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- UY START -->
+      <div id="uyan_frame"></div>
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+      <!-- UY END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><span class="toc-nav-text">[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BOPC-分四步完成这个过程。"><span class="toc-nav-text">BOPC 分四步完成这个过程。</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://windcarp.github.io/2018/10/11/BOP_Share/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "BOP-Block Oriented Programing(CCS 18)",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
