@@ -127,7 +127,7 @@
 
     <div id="article-banner">
   <h2>论文阅读分享</h2>
-  <p class="post-date">2018-04-11</p>
+  <p class="post-date">2018-10-10</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -135,47 +135,29 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>这篇博客会定期分享我阅读论文的笔记。</p>
+    <section class="markdown-content"><h1 id="BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><a href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18" class="headerlink" title="[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)"></a><strong>[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</strong></h1><p><strong>Paper:</strong> <a href="https://arxiv.org/abs/1805.04767" target="_blank" rel="external">https://arxiv.org/abs/1805.04767</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7LdDfB" target="_blank" rel="external">http://t.cn/E7LdDfB</a></p>
 <hr>
-<h2 id="4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>4. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识。Slide里介绍了以下内容：</p>
+<p>随着控制流完整性（CFI）的广泛部署， 控制流劫持攻击/代码重用攻击变得更加困难。 CFI将控制流限制在有限的位置，严重限制了任意代码的执行。在高级控制流劫持防御 （如CFI和影子堆栈）下评估应用程序的剩余攻击面仍然是一个悬而未决的问题。</p>
+<p>这篇文章介绍了BOPC（Block Oriented Programing Compiler），一种自动评估攻击者是否可以在使用 CFI/Shadowstack 防御强化的二进制文件上执行任意代码的机制。</p>
 <ul>
-<li>编译器的一些背景知识</li>
-<li>LLVM的设计</li>
-<li>一些LLVM中重要的概念与IR语言</li>
-<li>LLVM编译中的实现细节<ul>
-<li>Pass与优化</li>
-<li>Code Generator与SelectionDAG</li>
+<li>BOPC 的输入是以图灵完备的高级语言 SPL（Sploit Languate） 编写的 Exploit。</li>
+<li>SPL Payload 被编译为程序的 Trace，执行该 Trace 即执行了 Exploit 定义的行为。</li>
 </ul>
-</li>
-<li>LLVM的引用</li>
-</ul>
-<p>Slide: <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
-<hr>
-<h2 id="3-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#3-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="3. Compiler-assisted Code Randomization (Oakland 18)"></a>3. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
-<p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
-<p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
-<p>最后作者基于LLVM和Gold plugin实现了原型系统，并取得了很低的Overhead。作者在会议后将开源原型代码。</p>
-<p>Paper: <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="external">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
-<p>Slide: <a href="http://t.cn/E7yPCam" target="_blank" rel="external">http://t.cn/E7yPCam</a></p>
-<hr>
-<h2 id="2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>2. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
-<p>AOCR的攻击简单概括分两步：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383rvtd1j30r706pmys.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3845vdk3j30sp0g076s.jpg" alt=""></p>
+<p><strong>BOPC 分四步完成这个过程。</strong></p>
 <ol>
-<li>找到Indirect code pointer和函数的对应关系</li>
-<li>通过Malicious Loop Redirection将找到的Code pointer进行Chaining并调用，完成操作</li>
+<li>使用 SPL 定义漏洞利用行为</li>
+<li>找到功能块（Function Block）并选择适当的块</li>
+<li>找到 BOP Gadget 的调度程序块（Dispatcher Block）</li>
+<li>Chain BOP Gadgets</li>
 </ol>
-<p>这篇文章最后给出了Nginx和Apache的实际漏洞的利用（未放出代码），并绕过了绝大多数的防御措施。</p>
-<p>Paper：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
-<p>Slide: <a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
-<hr>
-<h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw388tg94mj30w10b0n5o.jpg" alt=""></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3895lltxj30eb09caco.jpg" alt=""></p>
-<p>最终的效果是在满足条件的122个CVE里成功产生了18个Poc，并顺便发现了一个0day和一个Undisclosed漏洞。</p>
-<p>本篇的作者来自信工所、Indiana与人大，一作是Wei You，二作是Peiyuan Zong。</p>
-<p><strong>Paper:</strong> <a href="https://acmccs.github.io/papers/p2139-youA.pdf" target="_blank" rel="external">https://acmccs.github.io/papers/p2139-youA.pdf</a></p>
-<p><strong>Slide:</strong> <a href="http://t.cn/E7yAyog" target="_blank" rel="external">http://t.cn/E7yAyog</a></p>
-<hr>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw37pgr1d3j30ss07a0v8.jpg" alt=""></p>
+<p>文中发现，将 SPL Payload 映射到程序 Trace 的问题是NP难的，因此BOPC首先通过修剪不可行路径来减少搜索空间，然后使用启发式方法来引导搜索到可能的路径。 </p>
+<p>最后，BOPC将 Trace 编码为一组内存写入。依赖程序的 AAW 漏洞，完成内存写入之后，可以从指定的 Entry Point 完成指定的行为。</p>
+<p>经过测试，BOPC 在 130 个测试中，成功为 105 个 Case 生成了完成了至少一种操作的路径。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383bqlzjj30vs08g458.jpg" alt=""></p>
 </section>
     <!-- Tags START -->
     
@@ -194,20 +176,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2017/08/14/Writeup/">
+      <a class="nav-left" href="/2018/05/16/Defcon CTF Quals 2018/">
         <span class="nav-arrow">← </span>
         
-          Pwnhub 线下沙龙CTF之cLEMENCy题解
+          Defcon CTF Quals 2018 &amp; Tech Support
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/04/13/CTF-Offline-Share/">
-        
-          二进制线下赛攻防分享
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -237,7 +212,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><span class="toc-nav-text">4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Compiler-assisted-Code-Randomization-Oakland-18"><span class="toc-nav-text">3. Compiler-assisted Code Randomization (Oakland 18)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><span class="toc-nav-text">2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><span class="toc-nav-text">1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><span class="toc-nav-text">[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</span></a></li></ol>
     
   </div>
 </aside>
@@ -247,7 +222,7 @@
 
 <script>
   (function () {
-    var url = 'https://windcarp.github.io/2018/04/11/Academic_share/';
+    var url = 'https://windcarp.github.io/2018/10/10/BOP_Share/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://windcarp.github.io/"/>
-  <updated>2018-05-16T01:53:00.000Z</updated>
+  <updated>2018-10-10T09:01:19.192Z</updated>
   <id>https://windcarp.github.io/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读分享</title>
+    <link href="https://windcarp.github.io/2018/10/10/BOP_Share/"/>
+    <id>https://windcarp.github.io/2018/10/10/BOP_Share/</id>
+    <published>2018-10-09T17:32:26.000Z</published>
+    <updated>2018-10-10T09:01:19.192Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><a href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18" class="headerlink" title="[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)"></a><strong>[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</strong></h1><p><strong>Paper:</strong> <a href="https://arxiv.org/abs/1805.04767" target="_blank" rel="external">https://arxiv.org/abs/1805.04767</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7LdDfB" target="_blank" rel="external">http://t.cn/E7LdDfB</a></p>
+<hr>
+<p>随着控制流完整性（CFI）的广泛部署， 控制流劫持攻击/代码重用攻击变得更加困难。 CFI将控制流限制在有限的位置，严重限制了任意代码的执行。在高级控制流劫持防御 （如CFI和影子堆栈）下评估应用程序的剩余攻击面仍然是一个悬而未决的问题。</p>
+<p>这篇文章介绍了BOPC（Block Oriented Programing Compiler），一种自动评估攻击者是否可以在使用 CFI/Shadowstack 防御强化的二进制文件上执行任意代码的机制。</p>
+<ul>
+<li>BOPC 的输入是以图灵完备的高级语言 SPL（Sploit Languate） 编写的 Exploit。</li>
+<li>SPL Payload 被编译为程序的 Trace，执行该 Trace 即执行了 Exploit 定义的行为。</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383rvtd1j30r706pmys.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3845vdk3j30sp0g076s.jpg" alt=""></p>
+<p><strong>BOPC 分四步完成这个过程。</strong></p>
+<ol>
+<li>使用 SPL 定义漏洞利用行为</li>
+<li>找到功能块（Function Block）并选择适当的块</li>
+<li>找到 BOP Gadget 的调度程序块（Dispatcher Block）</li>
+<li>Chain BOP Gadgets</li>
+</ol>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw37pgr1d3j30ss07a0v8.jpg" alt=""></p>
+<p>文中发现，将 SPL Payload 映射到程序 Trace 的问题是NP难的，因此BOPC首先通过修剪不可行路径来减少搜索空间，然后使用启发式方法来引导搜索到可能的路径。 </p>
+<p>最后，BOPC将 Trace 编码为一组内存写入。依赖程序的 AAW 漏洞，完成内存写入之后，可以从指定的 Entry Point 完成指定的行为。</p>
+<p>经过测试，BOPC 在 130 个测试中，成功为 105 个 Case 生成了完成了至少一种操作的路径。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383bqlzjj30vs08g458.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18&quot;&gt;&lt;a href=&quot;#BOP-Block-Oriented-Programming-Automating-Data-Only-At
+    
+    </summary>
+    
+      <category term="Academic" scheme="https://windcarp.github.io/categories/Academic/"/>
+    
+    
+      <category term="Paper" scheme="https://windcarp.github.io/tags/Paper/"/>
+    
+  </entry>
   
   <entry>
     <title>Defcon CTF Quals 2018 &amp; Tech Support</title>
@@ -240,12 +285,11 @@
     <link href="https://windcarp.github.io/2018/04/11/Academic_share/"/>
     <id>https://windcarp.github.io/2018/04/11/Academic_share/</id>
     <published>2018-04-10T17:32:26.000Z</published>
-    <updated>2018-04-13T12:11:06.000Z</updated>
+    <updated>2018-10-10T08:59:59.401Z</updated>
     
     <content type="html"><![CDATA[<p>这篇博客会定期分享我阅读论文的笔记。</p>
 <hr>
-<h2 id="5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="5. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>5. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识，中间翻车无数Orz;</p>
-<p>Slide里介绍了以下内容：</p>
+<h2 id="4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享"><a href="#4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享" class="headerlink" title="4. Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)"></a>4. <strong>Getting Started at LLVM - Yet another LLVM Tutorial(实践沙龙分享)</strong></h2><p>周四晚在实验室简单分享了LLVM相关的入门知识。Slide里介绍了以下内容：</p>
 <ul>
 <li>编译器的一些背景知识</li>
 <li>LLVM的设计</li>
@@ -257,16 +301,16 @@
 </li>
 <li>LLVM的引用</li>
 </ul>
-<p>Slide:  <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
+<p>Slide: <a href="https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/18MS6hXvyGXJcjR5rpFFnUCNb8MYdoamrplIySchFPKM/edit?usp=sharing</a></p>
 <hr>
-<h2 id="4-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#4-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="4. Compiler-assisted Code Randomization (Oakland 18)"></a>4. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
+<h2 id="3-Compiler-assisted-Code-Randomization-Oakland-18"><a href="#3-Compiler-assisted-Code-Randomization-Oakland-18" class="headerlink" title="3. Compiler-assisted Code Randomization (Oakland 18)"></a>3. <strong>Compiler-assisted Code Randomization (Oakland 18)</strong></h2><p>这篇文章是一篇基于编译器，做代码随机化的文章。</p>
 <p>这篇文章的亮点是，和之前的工作相比，实现了Basic Block级的细粒度随机化，可以在Client端以很小的Overhead生成以及运行；而且和现有的软件部署系统相兼容；</p>
 <p>其原理可以概述为，在编译时，收集关于程序的布局、Fixup、BasicBlock等必须的信息，在Client端使用Binary Rewriter根据这些信息，对BasicBlock进行随机排列。</p>
 <p>最后作者基于LLVM和Gold plugin实现了原型系统，并取得了很低的Overhead。作者在会议后将开源原型代码。</p>
 <p>Paper: <a href="https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf" target="_blank" rel="external">https://cs.brown.edu/~vpk/papers/ccr.sp18.pdf</a></p>
-<p>Slide: <a href="https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1UI-VWtXwbdiEes9I41e4MMGDGmgDhrcRSyzNbUQkD4I/edit?usp=sharing</a></p>
+<p>Slide: <a href="http://t.cn/E7yPCam" target="_blank" rel="external">http://t.cn/E7yPCam</a></p>
 <hr>
-<h2 id="3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#3-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="3. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>3. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
+<h2 id="2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17"><a href="#2-Address-Oblivious-Code-Reuse-On-the-Effectiveness-of-Leakage-Resilient-Diversity-NDSS17" class="headerlink" title="2. Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)"></a>2. <strong>Address-Oblivious Code Reuse: On the Effectiveness of Leakage-Resilient Diversity (NDSS17)</strong></h2><p>这篇文章来自于MIT的Lincoln实验室，发表在今年的NDSS17上。这篇文章讲述的是针对防御Code Reuse方式的攻击，主要针对Execute Only，提出了一种新的利用方法AOCR(Address Oblivious Code Reuse)，这种方法可以绕过绝大多数的防御。</p>
 <p>AOCR的攻击简单概括分两步：</p>
 <ol>
 <li>找到Indirect code pointer和函数的对应关系</li>
@@ -276,15 +320,13 @@
 <p>Paper：<a href="https://www.ics.uci.edu/~perl/ndss17_aocr.pdf" target="_blank" rel="external">https://www.ics.uci.edu/~perl/ndss17_aocr.pdf</a></p>
 <p>Slide: <a href="https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1fQOzVHJlcpfsPokgQwLm45qBis1P4qX532JWbi89bgA/edit?usp=sharing</a></p>
 <hr>
-<h2 id="2-Cyber-Grand-Shellphish-Phrank"><a href="#2-Cyber-Grand-Shellphish-Phrank" class="headerlink" title="2. Cyber Grand Shellphish (Phrank)"></a>2. <strong>Cyber Grand Shellphish (Phrank)</strong></h2><p>本篇叙述了Shellphish在Cyber Grand Challenge中做的一些工作，原文首发于phrank (<a href="http://phrack.org/papers/cyber_grand_shellphish.html)。" target="_blank" rel="external">http://phrack.org/papers/cyber_grand_shellphish.html)。</a></p>
-<p>为了方便阅读，故对其进行了重排版，并添加了一些阅读笔记在Google doc里面。</p>
-<p>Doc: <a href="https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/document/d/1D5TC2j8gWF6H6kO_me1Qo4Qo3EdR03Rvt7mfFcReR8Q/edit?usp=sharing</a></p>
-<hr>
 <h2 id="1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17"><a href="#1-SemFuzz-Semantics-based-Automatic-Generation-of-Proof-of-Concept-Exploits-CCS-17" class="headerlink" title="1. SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)"></a>1. <strong>SemFuzz: Semantics-based Automatic Generation of Proof-of-Concept Exploits (CCS 17)</strong></h2><p>本篇发表在最新的CCS 2017上，其工作主要是，基于linux kernel，采集CVE和git log中隐含的漏洞信息，通过自然语言处理进行分析，并使用Fuzz的手段（粗粒度和细粒度），产生能运行到漏洞函数的POC exploit。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw388tg94mj30w10b0n5o.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3895lltxj30eb09caco.jpg" alt=""></p>
 <p>最终的效果是在满足条件的122个CVE里成功产生了18个Poc，并顺便发现了一个0day和一个Undisclosed漏洞。</p>
-<p>本篇的作者来自信工所、Indiana与人民大学，一作是Wei You，二作是Peiyuan Zong。</p>
-<p>这篇论文是我在实验室的大组会上分享的，在深圳有同学也想参加，于是斗鱼上来了一次学术直播，之后学长告诉我这篇文章的作者小姐姐看了我的直播。第一次体验了主播的感觉，非常有趣，纪念一下，哈哈~</p>
-<p>Slide: <a href="https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing" target="_blank" rel="external">https://docs.google.com/presentation/d/1v223Vvh8rmf6Fk5mjVb5uaJ7FnTYYi0XFs9-iypjP3k/edit?usp=sharing</a></p>
+<p>本篇的作者来自信工所、Indiana与人大，一作是Wei You，二作是Peiyuan Zong。</p>
+<p><strong>Paper:</strong> <a href="https://acmccs.github.io/papers/p2139-youA.pdf" target="_blank" rel="external">https://acmccs.github.io/papers/p2139-youA.pdf</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/E7yAyog" target="_blank" rel="external">http://t.cn/E7yAyog</a></p>
 <hr>
 ]]></content>
     
@@ -292,7 +334,7 @@
     
       &lt;p&gt;这篇博客会定期分享我阅读论文的笔记。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&quot;5-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享&quot;&gt;&lt;a href=&quot;#5-Getting-Started-at-LLVM-Yet-a
+&lt;h2 id=&quot;4-Getting-Started-at-LLVM-Yet-another-LLVM-Tutorial-实践沙龙分享&quot;&gt;&lt;a href=&quot;#4-Getting-Started-at-LLVM-Yet-a
     
     </summary>
     
@@ -308,7 +350,7 @@
     <link href="https://windcarp.github.io/2017/08/14/Writeup/"/>
     <id>https://windcarp.github.io/2017/08/14/Writeup/</id>
     <published>2017-08-14T07:27:12.000Z</published>
-    <updated>2018-03-23T06:01:39.000Z</updated>
+    <updated>2018-10-10T09:01:07.729Z</updated>
     
     <content type="html"><![CDATA[<p>8月12日Pwnhub第一次沙龙，心想到要和一众大佬面基，心情异常激动，于是攥着讨来的邀请函，冒着12级大雨，满心欢喜的赶到了五环的小别墅~</p>
 <p>上午的议题干货满满，有冠城大佬，360小姐姐和青博学弟flyyy的分享，中午的<strong>烧烤 + 德州扑克</strong>之后便是Pwnhub的经典项目CTF，其中Explorer大佬出了一道<code>cLEMENCy</code>架构的题目。</p>
