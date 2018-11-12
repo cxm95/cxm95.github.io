@@ -146,9 +146,9 @@
 <p>作者将敏感数据代码所在特权等级(r2)称为PrivUser-mode。用户模式由于页面属性的限制不能访问到内核及PrivUser，而作者将R2所在段的段基地地址与段限写在固定的位置，使得PrivUser的代码不能访问到内核。用用户可以将特殊的数据如密钥等标记为敏感数据从而存放在PrivUser所在的S页面中。而需要访问到这些敏感数据需要先将处理器提升到R2级别。作者将访问数据的函数同样放到PrivUser所在的内存中。[1]</p>
 <h2 id="Design-Call-Gate"><a href="#Design-Call-Gate" class="headerlink" title="Design - Call Gate"></a>Design - Call Gate</h2><p><img src="https://loccs.sjtu.edu.cn/gossip/images/2018-10-30/2.png" alt=""></p>
 <p>如上图即为作者的跨段跳转示意图，作者借助r1作为一个跨段跳转板，原因是他将R2段中的L标志(32位兼容模式)置位了，而跨段跳转指令不允许从一个非32位段跳到一个32位段，因此只能采用一些比较 Tricky 的方法：先进入R1将特权等级提升，再通过段返回指令(lret)到PrivUser mode[1]。</p>
-<p>这里这么设计主要出于两个动机：</p>
+<p>这里设计主要出于两个动机：</p>
 <ol>
-<li><p>作者这里是想利用 Ring 1 和 Ring 2 两个特权级别。但是这两个级别在 x86_64 的 64位模式下，对于 Data Segment，是没有 Ring 1 和 Ring 2, Ring 0 的区别的。因此，作者想引入 32位模式下的寻址模式，利用现有段页式寻址的模式，就必须让代码运行在32位模式下。但是如果直接运行在 32位 模式下，又没办法直接跳转过来，就只能设计 Call Gate。这是 Call Gate 存在的意义。</p>
+<li><p>作者这里是想利用 Ring 1 和 Ring 2 两个特权级别。但是这两个级别在 x86_64 的 64位模式下，对于 Data Segment，是没有 Ring 1 和 Ring 2, Ring 0 的区别的。因此，作者想引入 32位模式下的寻址模式，利用现有段页式寻址的模式，就必须让代码运行在32位模式下。但是如果直接运行在 32位 模式下，又没办法直接跳转过来，就只能设计 Call Gate。<strong>这是 Call Gate 存在的意义</strong>。</p>
 </li>
 <li><p>但是为什么这里把 Call Gate 放在 Ring 1 呢？作者在文中专门给出了解释，<strong>为了做到更稳健的特权分离</strong>：因为 64-bit mode 下的代码，即使在 Ring 1/2 层，也是可以访问 Ring 0 的数据的。如果 Call Gate 在 Ring 2 层，理论上 Ring 2 层的敏感代码是可以直接跳到 Ring 2 层的 Call Gate 上，而 64-bit mode 下的 Call Gate 理论上又对所有的 Ring 0/1/2 数据都有访问权限；因此必须将 Call Gate 放在 Ring 1 上，为了保证 Ring 2 的 x86 代码无法直接跳转到 Call Gate。</p>
 </li>
