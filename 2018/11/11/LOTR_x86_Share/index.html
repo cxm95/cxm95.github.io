@@ -10,7 +10,7 @@
   
   <title>
     
-      BOP-Block Oriented Programing(CCS 18) | 星博‘s
+      Lord of the X86 Rings-A Portable User Mode Privilege Separation Architecture on X86 (CCS 18) | 星博‘s
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -126,8 +126,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>BOP-Block Oriented Programing(CCS 18)</h2>
-  <p class="post-date">2018-10-11</p>
+  <h2>Lord of the X86 Rings-A Portable User Mode Privilege Separation Architecture on X86 (CCS 18)</h2>
+  <p class="post-date">2018-11-11</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -135,30 +135,28 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><a href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18" class="headerlink" title="[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)"></a><strong>[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</strong></h1><p><strong>Paper:</strong> <a href="https://arxiv.org/abs/1805.04767" target="_blank" rel="noopener">https://arxiv.org/abs/1805.04767</a></p>
-<p><strong>Slide:</strong> <a href="http://t.cn/E7LdDfB" target="_blank" rel="noopener">http://t.cn/E7LdDfB</a></p>
+    <section class="markdown-content"><h1 id="LOTRx86-Lord-of-the-X86-Rings-A-Portable-User-Mode-Privilege-Separation-Architecture-on-X86-CCS’18"><a href="#LOTRx86-Lord-of-the-X86-Rings-A-Portable-User-Mode-Privilege-Separation-Architecture-on-X86-CCS’18" class="headerlink" title="[LOTRx86] Lord of the X86 Rings: A Portable User Mode Privilege Separation Architecture on X86(CCS’18)"></a><strong>[LOTRx86] Lord of the X86 Rings: A Portable User Mode Privilege Separation Architecture on X86(CCS’18)</strong></h1><p><strong>Paper:</strong> <a href="https://dl.acm.org/citation.cfm?id=3243748" target="_blank" rel="noopener">https://dl.acm.org/citation.cfm?id=3243748</a></p>
+<p><strong>Slide:</strong> <a href="http://t.cn/EAYlx9E" target="_blank" rel="noopener">http://t.cn/EAYlx9E</a></p>
 <hr>
-<iframe src="https://www.slideshare.net/slideshow/embed_code/key/ewH4NgabESeFDt" width="800" height="600" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/pQ3s3OIJGeFmpX" width="800" height="600" frameborder="0" allowfullscreen></iframe>
 <hr>
-<p>随着控制流完整性（CFI）的广泛部署， 控制流劫持攻击/代码重用攻击变得更加困难。 CFI将控制流限制在有限的位置，严重限制了任意代码的执行。在高级控制流劫持防御 （如CFI和影子堆栈）下评估应用程序的剩余攻击面仍然是一个悬而未决的问题。</p>
-<p>这篇文章介绍了BOPC（Block Oriented Programing Compiler），一种自动评估攻击者是否可以在使用 CFI/Shadowstack 防御强化的二进制文件上执行任意代码的机制。</p>
-<ul>
-<li>BOPC 的输入是以图灵完备的高级语言 SPL（Sploit Languate） 编写的 Exploit。</li>
-<li>SPL Payload 被编译为程序的 Trace，执行该 Trace 即执行了 Exploit 定义的行为。</li>
-</ul>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383rvtd1j30r706pmys.jpg" alt=""></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fw3845vdk3j30sp0g076s.jpg" alt=""></p>
-<h3 id="BOPC-分四步完成这个过程。"><a href="#BOPC-分四步完成这个过程。" class="headerlink" title="BOPC 分四步完成这个过程。"></a><strong>BOPC 分四步完成这个过程。</strong></h3><ol>
-<li>使用 SPL 定义漏洞利用行为</li>
-<li>找到功能块（Function Block）并选择适当的块</li>
-<li>找到 BOP Gadget 的调度程序块（Dispatcher Block）</li>
-<li>Chain BOP Gadgets</li>
+<h2 id="Background-Portable-In-Process-isolation"><a href="#Background-Portable-In-Process-isolation" class="headerlink" title="Background: Portable In-Process isolation"></a>Background: Portable In-Process isolation</h2><p>现代应用程序通常涉及敏感信息的处理。但是，用户空间内缺少权限分离会使敏感的应用程序秘密（例如加密密钥）像“hello world”字符串一样不受保护。虽然 intel 等芯片厂商正在引入尖端的硬件支持，如 CET, SGX 等。但是，这些功能通常是特定于供应商的，或者与老一代处理器不兼容。这种情况使开发人员无法使用便携式解决方案来保护敏感应用程序组件。</p>
+<p>这篇文章的贡献是，提出了LOTRx86，这是一种用于用户空间权限分离的基本且可移植的方法。我们的方法通过利用x86体系结构中未充分利用的中间权限级别来创建名为PrivUser的更高权限的用户执行层。 PrivUser内存空间是进程地址空间中用户模式无法访问的一组页面，用于存储敏感数据与访问敏感数据的代码。</p>
+<h2 id="Design-Privilege-Mode"><a href="#Design-Privilege-Mode" class="headerlink" title="Design - Privilege Mode"></a>Design - Privilege Mode</h2><p><img src="https://loccs.sjtu.edu.cn/gossip/images/2018-10-30/1.png" alt=""></p>
+<p>作者将敏感数据代码所在特权等级(r2)称为PrivUser-mode。用户模式由于页面属性的限制不能访问到内核及PrivUser，而作者将R2所在段的段基地地址与段限写在固定的位置，使得PrivUser的代码不能访问到内核。用用户可以将特殊的数据如密钥等标记为敏感数据从而存放在PrivUser所在的S页面中。而需要访问到这些敏感数据需要先将处理器提升到R2级别。作者将访问数据的函数同样放到PrivUser所在的内存中。[1]</p>
+<h2 id="Design-Call-Gate"><a href="#Design-Call-Gate" class="headerlink" title="Design - Call Gate"></a>Design - Call Gate</h2><p><img src="https://loccs.sjtu.edu.cn/gossip/images/2018-10-30/2.png" alt=""></p>
+<p>如上图即为作者的跨段跳转示意图，作者借助r1作为一个跨段跳转板，原因是他将R2段中的L标志(32位兼容模式)置位了，而跨段跳转指令不允许从一个非32位段跳到一个32位段，因此只能采用一些比较 Tricky 的方法：先进入R1将特权等级提升，再通过段返回指令(lret)到PrivUser mode[1]。</p>
+<p>这里这么设计主要出于两个动机：</p>
+<ol>
+<li><p>作者这里是想利用 Ring 1 和 Ring 2 两个特权级别。但是这两个级别在 x86_64 的 64位模式下，对于 Data Segment，是没有 Ring 1 和 Ring 2, Ring 0 的区别的。因此，作者想引入 32位 模式下的寻址模式，利用现有段页式寻址的模式，就必须让代码运行在32位模式下。但是如果直接运行在 32位 模式下，又没办法直接跳转过来，就只能设计 Call Gate。这是 Call Gate 存在的意义。</p>
+</li>
+<li><p>但是为什么这里把 Call Gate 放在 Ring 1 呢？作者在文中专门给出了解释，<strong>为了做到更稳健的特权分离</strong>：因为 64-bit mode 下的代码，即使在 Ring 1/2 层，也是可以访问 Ring 0 的数据的。如果 Call Gate 在 Ring 2 层，理论上 Ring 2 层的敏感代码是可以直接跳到 Ring 2 层的 Call Gate 上，而 64-bit mode 下的 Call Gate 理论上又对所有的 Ring 0/1/2 数据都有访问权限；因此必须将 Call Gate 放在 Ring 1 上，为了保证 Ring 2 的 x86 代码无法直接跳转到 Call Gate。</p>
+</li>
 </ol>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw37pgr1d3j30ss07a0v8.jpg" alt=""></p>
-<p>文中发现，将 SPL Payload 映射到程序 Trace 的问题是NP难的，因此BOPC首先通过修剪不可行路径来减少搜索空间，然后使用启发式方法来引导搜索到可能的路径。 </p>
-<p>最后，BOPC 将 Trace 编码为一组内存写入。依赖程序的 AAW 漏洞，完成内存写入之后，可以从指定的 Entry Point 完成指定的行为。</p>
-<p>经过测试，BOPC 在 130 个测试中，成功为 105 个 Case 生成了完成了至少一种操作的路径。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw383bqlzjj30vs08g458.jpg" alt=""></p>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><p><img src="https://loccs.sjtu.edu.cn/gossip/images/2018-10-30/3.png" alt=""></p>
+<p>作者定义了一个宏，这个宏接受函数名称和参数类型等作为参数，并对外导出一个调用接口。开发者将访问敏感数据的函数导出，然后在主程序中使用系统所提供的宏来访问这个函数。由于PrivUser层的数据代码是32位兼容的，因此作者直接将这段内容直接链接进可以执行文件中。并且作者修改了libc中的malloc等内存分配函数使得PrivUser中的函数分配的内存始终在PrivUser内存中。其中包含一个内核模块，其功能为初始化LDT，初始化PrivUser内存，写入跨段跳转中转指令等。[1]</p>
+<p>Reference: </p>
+<p>[1] <a href="https://securitygossip.com/blog/2018/10/30/lord-of-the-x86-rings-a-portable-user-mode-privilege-separation-architecture-on-x86/" target="_blank" rel="noopener">https://securitygossip.com/blog/2018/10/30/lord-of-the-x86-rings-a-portable-user-mode-privilege-separation-architecture-on-x86/</a></p>
 </section>
     <!-- Tags START -->
     
@@ -177,20 +175,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/05/16/Defcon CTF Quals 2018/">
+      <a class="nav-left" href="/2018/10/11/BOP_Share/">
         <span class="nav-arrow">← </span>
         
-          Defcon CTF Quals 2018
+          BOP-Block Oriented Programing(CCS 18)
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/11/11/LOTR_x86_Share/">
-        
-          Lord of the X86 Rings-A Portable User Mode Privilege Separation Architecture on X86 (CCS 18)
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -220,7 +211,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#BOP-Block-Oriented-Programming-Automating-Data-Only-Attacks-CCS’18"><span class="toc-nav-text">[BOP] Block Oriented Programming Automating Data-Only Attacks(CCS’18)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#BOPC-分四步完成这个过程。"><span class="toc-nav-text">BOPC 分四步完成这个过程。</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#LOTRx86-Lord-of-the-X86-Rings-A-Portable-User-Mode-Privilege-Separation-Architecture-on-X86-CCS’18"><span class="toc-nav-text">[LOTRx86] Lord of the X86 Rings: A Portable User Mode Privilege Separation Architecture on X86(CCS’18)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Background-Portable-In-Process-isolation"><span class="toc-nav-text">Background: Portable In-Process isolation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Design-Privilege-Mode"><span class="toc-nav-text">Design - Privilege Mode</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Design-Call-Gate"><span class="toc-nav-text">Design - Call Gate</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Implementation"><span class="toc-nav-text">Implementation</span></a></li></ol>
     
   </div>
 </aside>
@@ -230,7 +221,7 @@
 
 <script>
   (function () {
-    var url = 'https://windcarp.github.io/2018/10/11/BOP_Share/';
+    var url = 'https://windcarp.github.io/2018/11/11/LOTR_x86_Share/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -286,7 +277,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "BOP-Block Oriented Programing(CCS 18)",
+        id: "Lord of the X86 Rings-A Portable User Mode Privilege Separation Architecture on X86 (CCS 18)",
         owner: "undefined",
         repo: "undefined",
         oauth: {
