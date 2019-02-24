@@ -148,14 +148,26 @@ var path = url.attr('path');
 if(path.search('video') == 1){
 	window.location.replace("http://202.112.50.114:8096/web/index.html");
 }
+else if(path.search('ftp/') == 1){
+	var newurl = source.replace('https://cxm95.github.io/ftp/','ftp://202.112.51.150/');
+	window.location.replace(newurl);
+}
 else if(path.search('ftp') == 1){
 	window.location.replace("ftp://202.112.51.150");
 }
 else if(path.search('wiki') == 1){
 	window.location.replace("https://202.112.50.182:8080");
 }
+else if(path.search('code/') == 1){
+	var newurl = source.replace('https://cxm95.github.io/code/','http://202.112.51.153:8989/');
+	window.location.replace(newurl);
+}
 else if(path.search('code') == 1){
 	window.location.replace("http://202.112.51.153:8989");
+}
+else if(path.search('download/') == 1){
+	var newurl = source.replace('https://cxm95.github.io/download/','http://202.112.51.150:4096/');
+	window.location.replace(newurl);
 }
 else if(path.search('download') == 1){
 	window.location.replace("http://202.112.51.150:4096");
